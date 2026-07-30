@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#d99a2b"/>
+      <stop offset="100%" style="stop-color:#c07a21"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="200" height="200" rx="24" fill="#1a1a1a"/>
+  <!-- House shape -->
+  <path d="M100 35 L160 80 L160 155 L40 155 L40 80 Z" fill="none" stroke="url(#goldGrad)" stroke-width="6" stroke-linejoin="round"/>
+  <!-- Roof accent -->
+  <path d="M100 35 L160 80 L40 80 Z" fill="url(#goldGrad)" opacity="0.2"/>
+  <!-- Door -->
+  <rect x="85" y="110" width="30" height="45" rx="4" fill="url(#goldGrad)"/>
+  <!-- Window left -->
+  <rect x="52" y="95" width="22" height="22" rx="3" fill="none" stroke="url(#goldGrad)" stroke-width="3"/>
+  <!-- Window right -->
+  <rect x="126" y="95" width="22" height="22" rx="3" fill="none" stroke="url(#goldGrad)" stroke-width="3"/>
+  <!-- HG Letters -->
+  <text x="100" y="185" text-anchor="middle" fill="url(#goldGrad)" font-family="Georgia, serif" font-size="24" font-weight="bold">HG</text>
+</svg>

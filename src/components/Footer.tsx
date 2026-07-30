@@ -1,6 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
-import { Phone, Mail, MapPin, Clock, ExternalLink } from "lucide-react";
+import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { IMAGES, DUMMY_DATA } from "@/lib/images";
 
 export function Footer() {
@@ -11,7 +10,7 @@ export function Footer() {
           {/* Company Info */}
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center gap-3 mb-4">
-              <Image 
+              <img 
                 src={IMAGES.logo} 
                 alt="House of Granite Logo" 
                 width={50} 

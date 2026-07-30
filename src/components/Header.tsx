@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useState } from "react";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import { IMAGES } from "@/lib/images";
@@ -81,7 +80,7 @@ export function Header() {
         <div className="flex items-center justify-between h-18 lg:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
-            <Image 
+            <img 
               src={IMAGES.logo} 
               alt="House of Granite Logo" 
               width={50} 
@@ -123,7 +122,7 @@ export function Header() {
                   </Link>
                 )}
                 {item.children && openDropdown === item.label && (
-                  <div className="absolute top-full left-0 bg-white rounded-xl shadow-xl border border-granite-100 py-2 min-w-[220px] z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+                  <div className="absolute top-full left-0 bg-white rounded-xl shadow-xl border border-granite-100 py-2 min-w-[220px] z-50">
                     {item.children.map((child) => (
                       <Link
                         key={child.href}

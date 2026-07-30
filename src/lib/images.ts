@@ -1,68 +1,81 @@
 // All images use Unsplash free CDN — available anywhere, no local files needed
+// Logo is SVG stored locally in /public/images/logo.svg
+
 export const IMAGES = {
-  logo: "/images/logo.png",
+  // Local SVG logo - always works
+  logo: "/images/logo.svg",
+  
+  // Hero image
   hero: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1600&h=900&fit=crop&q=80",
 
+  // Kitchen images (8)
   kitchens: [
-    "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&h=800&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=1200&h=800&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&h=800&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&h=800&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1200&h=800&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&h=800&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=1200&h=800&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=1200&h=800&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80",
+    "https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=800&q=80",
+    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
+    "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80",
+    "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=80",
+    "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80",
+    "https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=800&q=80",
+    "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&q=80",
   ],
 
+  // Bathroom images (6)
   bathrooms: [
-    "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1200&h=800&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1620626011761-996317b8d101?w=1200&h=800&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=1200&h=800&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1604709177225-055f99402ea3?w=1200&h=800&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1600573472591-ee6981cf81f0?w=1200&h=800&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1200&h=800&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&q=80",
+    "https://images.unsplash.com/photo-1620626011761-996317b8d101?w=800&q=80",
+    "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800&q=80",
+    "https://images.unsplash.com/photo-1604709177225-055f99402ea3?w=800&q=80",
+    "https://images.unsplash.com/photo-1600573472591-ee6981cf81f0?w=800&q=80",
+    "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&q=80",
   ],
 
+  // Countertop images (6)
   countertops: [
-    "https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=1200&h=800&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1618220179428-22790b461013?w=1200&h=800&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1600566752229-250ed79470f8?w=1200&h=800&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?w=1200&h=800&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1200&h=800&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200&h=800&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=800&q=80",
+    "https://images.unsplash.com/photo-1618220179428-22790b461013?w=800&q=80",
+    "https://images.unsplash.com/photo-1600566752229-250ed79470f8?w=800&q=80",
+    "https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?w=800&q=80",
+    "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800&q=80",
+    "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&q=80",
   ],
 
+  // Home exterior images (8) for service areas
   homes: [
-    "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&h=800&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&h=800&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&h=800&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=1200&h=800&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=1200&h=800&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200&h=800&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1200&h=800&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=1200&h=800&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80",
+    "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80",
+    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
+    "https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=800&q=80",
+    "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=80",
+    "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80",
+    "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80",
+    "https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=800&q=80",
   ],
 
+  // Backsplash images (4)
   backsplash: [
-    "https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=1200&h=800&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1556909114-44e3e70034e2?w=1200&h=800&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1600566752229-250ed79470f8?w=1200&h=800&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=1200&h=800&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=800&q=80",
+    "https://images.unsplash.com/photo-1556909114-44e3e70034e2?w=800&q=80",
+    "https://images.unsplash.com/photo-1600566752229-250ed79470f8?w=800&q=80",
+    "https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=800&q=80",
   ],
 
+  // Outdoor kitchen images (2)
   outdoor: [
-    "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&h=800&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&h=800&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80",
+    "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80",
   ],
 
+  // Fireplace images (2)
   fireplace: [
-    "https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?w=1200&h=800&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1200&h=800&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?w=800&q=80",
+    "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=80",
   ],
 
+  // Work/contractor images (2)
   work: [
-    "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1200&h=800&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&h=800&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80",
+    "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80",
   ],
 };
 
