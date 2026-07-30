@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@theme {
+  --color-granite-50: #faf9f7;
+  --color-granite-100: #f0eeea;
+  --color-granite-200: #ddd9d1;
+  --color-granite-300: #c5bfb3;
+  --color-granite-400: #a9a08f;
+  --color-granite-500: #918674;
+  --color-granite-600: #847868;
+  --color-granite-700: #6e6457;
+  --color-granite-800: #5c534a;
+  --color-granite-900: #4d463f;
+  --color-granite-950: #282421;
+
+  --color-gold-50: #fdf9ef;
+  --color-gold-100: #f9f0d5;
+  --color-gold-200: #f2dfa9;
+  --color-gold-300: #eac974;
+  --color-gold-400: #e4b44d;
+  --color-gold-500: #d99a2b;
+  --color-gold-600: #c07a21;
+  --color-gold-700: #a05b1e;
+  --color-gold-800: #83491f;
+  --color-gold-900: #6c3d1d;
+  --color-gold-950: #3e1e0d;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
