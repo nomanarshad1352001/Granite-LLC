@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { IMAGES, DUMMY_DATA } from "@/lib/images";
 import {
   Star,

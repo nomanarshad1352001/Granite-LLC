@@ -1,68 +1,68 @@
-// All images are stored locally in /public/images/ for download
+// All images use Unsplash free CDN — available anywhere, no local files needed
 export const IMAGES = {
   logo: "/images/logo.png",
-  hero: "/images/hero.jpg",
-  
+  hero: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1600&h=900&fit=crop&q=80",
+
   kitchens: [
-    "/images/kitchens/kitchen-1.jpg",
-    "/images/kitchens/kitchen-2.jpg",
-    "/images/kitchens/kitchen-3.jpg",
-    "/images/kitchens/kitchen-4.jpg",
-    "/images/kitchens/kitchen-5.jpg",
-    "/images/kitchens/kitchen-6.jpg",
-    "/images/kitchens/kitchen-7.jpg",
-    "/images/kitchens/kitchen-8.jpg",
+    "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&h=800&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=1200&h=800&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&h=800&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&h=800&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1200&h=800&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&h=800&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=1200&h=800&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=1200&h=800&fit=crop&q=80",
   ],
-  
+
   bathrooms: [
-    "/images/bathrooms/bathroom-1.jpg",
-    "/images/bathrooms/bathroom-2.jpg",
-    "/images/bathrooms/bathroom-3.jpg",
-    "/images/bathrooms/bathroom-4.jpg",
-    "/images/bathrooms/bathroom-5.jpg",
-    "/images/bathrooms/bathroom-6.jpg",
+    "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1200&h=800&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1620626011761-996317b8d101?w=1200&h=800&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=1200&h=800&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1604709177225-055f99402ea3?w=1200&h=800&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1600573472591-ee6981cf81f0?w=1200&h=800&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1200&h=800&fit=crop&q=80",
   ],
-  
+
   countertops: [
-    "/images/countertops/countertop-1.jpg",
-    "/images/countertops/countertop-2.jpg",
-    "/images/countertops/countertop-3.jpg",
-    "/images/countertops/countertop-4.jpg",
-    "/images/countertops/countertop-5.jpg",
-    "/images/countertops/countertop-6.jpg",
+    "https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=1200&h=800&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1618220179428-22790b461013?w=1200&h=800&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1600566752229-250ed79470f8?w=1200&h=800&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?w=1200&h=800&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1200&h=800&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200&h=800&fit=crop&q=80",
   ],
-  
+
   homes: [
-    "/images/homes/home-1.jpg",
-    "/images/homes/home-2.jpg",
-    "/images/homes/home-3.jpg",
-    "/images/homes/home-4.jpg",
-    "/images/homes/home-5.jpg",
-    "/images/homes/home-6.jpg",
-    "/images/homes/home-7.jpg",
-    "/images/homes/home-8.jpg",
+    "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&h=800&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&h=800&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&h=800&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=1200&h=800&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=1200&h=800&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200&h=800&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1200&h=800&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=1200&h=800&fit=crop&q=80",
   ],
-  
+
   backsplash: [
-    "/images/backsplash/backsplash-1.jpg",
-    "/images/backsplash/backsplash-2.jpg",
-    "/images/backsplash/backsplash-3.jpg",
-    "/images/backsplash/backsplash-4.jpg",
+    "https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=1200&h=800&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1556909114-44e3e70034e2?w=1200&h=800&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1600566752229-250ed79470f8?w=1200&h=800&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=1200&h=800&fit=crop&q=80",
   ],
-  
+
   outdoor: [
-    "/images/outdoor/outdoor-1.jpg",
-    "/images/outdoor/outdoor-2.jpg",
+    "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&h=800&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&h=800&fit=crop&q=80",
   ],
-  
+
   fireplace: [
-    "/images/fireplace/fireplace-1.jpg",
-    "/images/fireplace/fireplace-2.jpg",
+    "https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?w=1200&h=800&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1200&h=800&fit=crop&q=80",
   ],
-  
+
   work: [
-    "/images/work/work-1.jpg",
-    "/images/work/work-2.jpg",
+    "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1200&h=800&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&h=800&fit=crop&q=80",
   ],
 };
 
@@ -74,7 +74,7 @@ export const DUMMY_DATA = {
     happyClients: 1800,
     fiveStarReviews: 450,
   },
-  
+
   reviews: [
     { id: 1, name: "Sarah Mitchell", location: "Springfield, IL", rating: 5, project: "Kitchen Countertops", text: "House of Granite did an incredible job on our kitchen countertops. The quartz turned out beautiful and the installation was flawless. The team was professional, clean, and finished on time. Highly recommend!", date: "2024-01-15", verified: true },
     { id: 2, name: "James & Karen Peterson", location: "Riverside, CA", rating: 5, project: "Full Kitchen Remodel", text: "We hired them for a full kitchen remodel — countertops, cabinets, backsplash. Everything was completed on time and looks amazing. Very professional team that kept us informed throughout the project.", date: "2024-01-10", verified: true },
@@ -93,22 +93,7 @@ export const DUMMY_DATA = {
     { id: 15, name: "Mark Anderson", location: "Maplewood, MN", rating: 5, project: "Fireplace Surround", text: "Beautiful marble fireplace surround installation. It's now the focal point of our living room. The team was professional and the quality exceeded expectations.", date: "2023-10-20", verified: true },
     { id: 16, name: "Stephanie & John Taylor", location: "Cedar Hills, OR", rating: 5, project: "Backsplash Installation", text: "The subway tile backsplash with accent strip looks incredible. Great attention to detail and the grout lines are perfectly even. Transformed our kitchen!", date: "2023-10-15", verified: true },
   ],
-  
-  galleryProjects: [
-    { id: 1, title: "Modern Minimalist Kitchen", category: "kitchens", description: "Complete kitchen remodel with white quartz countertops and custom cabinetry", featured: true },
-    { id: 2, title: "Luxury Master Bathroom", category: "bathrooms", description: "Walk-in shower with frameless glass and marble vanity top", featured: true },
-    { id: 3, title: "Granite Kitchen Island", category: "countertops", description: "Large kitchen island with Colonial White granite and waterfall edge", featured: true },
-    { id: 4, title: "Coastal Kitchen Renovation", category: "kitchens", description: "Beach-inspired kitchen with blue quartz and shaker cabinets", featured: false },
-    { id: 5, title: "Spa-Like Bathroom", category: "bathrooms", description: "Freestanding tub with marble surround and double vanity", featured: false },
-    { id: 6, title: "Quartzite Countertops", category: "countertops", description: "Super White quartzite with mitered edge detail", featured: false },
-    { id: 7, title: "Traditional Kitchen Update", category: "kitchens", description: "Classic kitchen with Baltic Brown granite and raised panel doors", featured: false },
-    { id: 8, title: "Guest Bathroom Remodel", category: "bathrooms", description: "Modern guest bath with quartz vanity and walk-in shower", featured: false },
-    { id: 9, title: "Double Vanity Installation", category: "vanities", description: "72\" double vanity with Calacatta quartz top", featured: true },
-    { id: 10, title: "Outdoor Kitchen Setup", category: "outdoor", description: "Complete outdoor kitchen with granite counters and built-in grill", featured: true },
-    { id: 11, title: "Fireplace Surround", category: "fireplace", description: "Floor-to-ceiling marble fireplace surround", featured: false },
-    { id: 12, title: "Subway Tile Backsplash", category: "backsplash", description: "Classic white subway tile with dark grout accent", featured: false },
-  ],
-  
+
   serviceAreas: [
     { name: "Springfield", desc: "Our headquarters — full countertop and remodeling services", primary: true, projects: 450, img: 0 },
     { name: "Riverside", desc: "Kitchen remodeling, bathroom renovation, countertop installation", primary: true, projects: 320, img: 1 },
@@ -123,7 +108,7 @@ export const DUMMY_DATA = {
     { name: "Valley View", desc: "Full remodeling and countertop services", primary: false, projects: 85, img: 2 },
     { name: "Brookfield", desc: "Residential countertop and cabinet services", primary: false, projects: 75, img: 3 },
   ],
-  
+
   materials: [
     { name: "Absolute Black Granite", type: "Granite", origin: "India", price: "$$", popular: true },
     { name: "Colonial White Granite", type: "Granite", origin: "India", price: "$$", popular: true },
@@ -140,14 +125,14 @@ export const DUMMY_DATA = {
     { name: "Calacatta Marble", type: "Marble", origin: "Italy", price: "$$$$", popular: true },
     { name: "Carrara Marble", type: "Marble", origin: "Italy", price: "$$$", popular: true },
   ],
-  
+
   brands: [
     "Cambria", "Silestone", "Caesarstone", "MSI", "Cosentino", "Daltile", "Arizona Tile", "Pental", "LG Viatera", "Hanstone"
   ],
-  
+
   certifications: [
     "Licensed & Insured",
-    "BBB A+ Rating", 
+    "BBB A+ Rating",
     "EPA Lead-Safe Certified",
     "OSHA Compliant",
     "Manufacturer Certified Installer"
