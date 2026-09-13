@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, X, Phone, ChevronDown } from "lucide-react";
+import { Menu, X, Phone, ChevronDown, LayoutDashboard } from "lucide-react";
 import { IMAGES } from "@/lib/images";
 
 const navItems = [
@@ -45,6 +45,7 @@ const navItems = [
       { label: "Contractors & Builders", href: "/contractors" },
       { label: "Financing", href: "/financing" },
       { label: "Careers", href: "/careers" },
+      { label: "Platform Overview", href: "/platform" },
     ],
   },
   { label: "Contact", href: "/contact" },
@@ -122,13 +123,14 @@ export function Header() {
                   </Link>
                 )}
                 {item.children && openDropdown === item.label && (
-                  <div className="absolute top-full left-0 bg-white rounded-xl shadow-xl border border-granite-100 py-2 min-w-[220px] z-50">
+                  <div className="absolute top-full left-0 bg-white rounded-2xl shadow-2xl border border-granite-100 py-3 min-w-[230px] z-50 animate-slide-down">
                     {item.children.map((child) => (
                       <Link
                         key={child.href}
                         href={child.href}
-                        className="block px-4 py-2.5 text-sm text-granite-700 hover:bg-gradient-to-r hover:from-gold-50 hover:to-transparent hover:text-granite-950 transition"
+                        className="flex items-center gap-2 px-5 py-2.5 text-sm text-granite-600 hover:bg-gradient-to-r hover:from-gold-50 hover:to-transparent hover:text-granite-950 transition group"
                       >
+                        <span className="w-1.5 h-1.5 rounded-full bg-granite-300 group-hover:bg-gold-500 transition" />
                         {child.label}
                       </Link>
                     ))}
@@ -139,10 +141,16 @@ export function Header() {
           </nav>
 
           {/* CTA */}
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-2">
+            <Link
+              href="/admin/login"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-granite-200 px-3.5 py-2.5 text-xs font-semibold text-granite-700 transition hover:border-granite-300 hover:bg-granite-50"
+            >
+              <LayoutDashboard size={14} /> Admin
+            </Link>
             <Link
               href="/estimate"
-              className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-white px-6 py-2.5 rounded-lg text-sm font-semibold transition shadow-lg shadow-gold-500/25"
+              className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition shadow-lg shadow-gold-500/25"
             >
               Free Estimate
             </Link>
@@ -208,6 +216,13 @@ export function Header() {
               </div>
             ))}
             <div className="pt-4 border-t border-granite-100 space-y-3">
+              <Link
+                href="/admin/login"
+                onClick={() => setMobileOpen(false)}
+                className="flex w-full items-center justify-center gap-2 rounded-lg border border-granite-200 px-5 py-3 text-sm font-semibold text-granite-700"
+              >
+                <LayoutDashboard size={16} /> Admin Login
+              </Link>
               <Link
                 href="/estimate"
                 onClick={() => setMobileOpen(false)}

@@ -26,7 +26,7 @@ export const IMAGES = {
     "https://images.unsplash.com/photo-1620626011761-996317b8d101?w=800&q=80",
     "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800&q=80",
     "https://images.unsplash.com/photo-1604709177225-055f99402ea3?w=800&q=80",
-    "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800&q=80",
+    "https://images.unsplash.com/photo-1600573472591-ee6981cf81f0?w=800&q=80",
     "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&q=80",
   ],
 
@@ -69,7 +69,7 @@ export const IMAGES = {
   // Fireplace images (2)
   fireplace: [
     "https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?w=800&q=80",
-    "https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?w=800&q=80",
+    "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=80",
   ],
 
   // Work/contractor images (2)

@@ -15,6 +15,8 @@ const sections = [
       { label: "Contact Us", href: "/contact" },
       { label: "Request an Estimate", href: "/estimate" },
       { label: "Project Gallery", href: "/gallery" },
+      { label: "Platform Overview", href: "/platform" },
+      { label: "Admin Login", href: "/admin/login" },
     ],
   },
   {

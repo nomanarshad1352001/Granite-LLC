@@ -111,6 +111,8 @@ export function Footer() {
               <li><Link href="/service-areas" className="hover:text-gold-400 transition">Service Areas</Link></li>
               <li><Link href="/estimate" className="hover:text-gold-400 transition">Get Estimate</Link></li>
               <li><Link href="/contact" className="hover:text-gold-400 transition">Contact Us</Link></li>
+              <li><Link href="/platform" className="hover:text-gold-400 transition">Platform Overview</Link></li>
+              <li><Link href="/admin/login" className="hover:text-gold-400 transition">Admin Login</Link></li>
             </ul>
             
             <div className="mt-6 p-4 bg-granite-900 rounded-xl">

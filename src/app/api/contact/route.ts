@@ -1,25 +1,12 @@
-import { db } from "@/db";
-import { contactMessages } from "@/db/schema";
-
 export async function POST(req: Request) {
-  try {
-    const body = await req.json();
-    const result = await db
-      .insert(contactMessages)
-      .values({
-        name: body.name,
-        email: body.email,
-        phone: body.phone || null,
-        subject: body.subject || null,
-        message: body.message,
-      })
-      .returning();
-    return Response.json({ success: true, id: result[0].id });
-  } catch (error) {
-    console.error("Contact submission error:", error);
-    return Response.json(
-      { success: false, error: "Failed to send message" },
-      { status: 500 }
-    );
+  const body = await req.json();
+  if (!body.name || !body.email || !body.message) {
+    return Response.json({ success: false, error: "Name, email, and message are required." }, { status: 400 });
   }
+
+  return Response.json({
+    success: true,
+    id: `MSG-${Date.now().toString().slice(-6)}`,
+    message: "Demo message received. Data is not permanently stored.",
+  });
 }

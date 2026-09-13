@@ -47,7 +47,7 @@ export default function MarblePage() {
         <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="grid grid-cols-2 gap-4 order-2 lg:order-1">
             <img src={IMAGES.countertops[4]} alt="Marble" className="rounded-xl shadow-lg w-full h-48 object-cover" />
-            <img src={IMAGES.bathrooms[3]} alt="Marble bathroom" className="rounded-xl shadow-lg w-full h-48 object-cover mt-8" />
+            <img src={IMAGES.bathrooms[4]} alt="Marble bathroom" className="rounded-xl shadow-lg w-full h-48 object-cover mt-8" />
           </div>
           <div className="order-1 lg:order-2">
             <h2 className="text-3xl font-bold text-granite-950 mb-6">The Timeless Choice</h2>

@@ -1,42 +1,22 @@
-import { db } from "@/db";
-import { contractorSubmissions } from "@/db/schema";
-import { desc } from "drizzle-orm";
+const contractorRequests = [
+  { id: "TR-291", companyName: "Lee Custom Homes", contactName: "Marcus Lee", projectType: "Multi-unit countertops", deadline: "Apr 18", status: "Pricing" },
+  { id: "TR-290", companyName: "Brooks Development", contactName: "Ethan Brooks", projectType: "12-unit granite package", deadline: "May 6", status: "Site Visit" },
+  { id: "TR-289", companyName: "Axis Build Group", contactName: "Noah Patel", projectType: "Commercial reception desk", deadline: "Mar 29", status: "Won" },
+];
 
 export async function POST(req: Request) {
-  try {
-    const body = await req.json();
-    const result = await db
-      .insert(contractorSubmissions)
-      .values({
-        companyName: body.companyName,
-        contactName: body.contactName,
-        phone: body.phone,
-        email: body.email,
-        projectType: body.projectType || null,
-        description: body.description || null,
-        deadline: body.deadline || null,
-        fileUrls: body.fileUrls || [],
-      })
-      .returning();
-    return Response.json({ success: true, id: result[0].id });
-  } catch (error) {
-    console.error("Contractor submission error:", error);
-    return Response.json(
-      { success: false, error: "Failed to submit" },
-      { status: 500 }
-    );
+  const body = await req.json();
+  if (!body.companyName || !body.contactName || !body.phone || !body.email) {
+    return Response.json({ success: false, error: "Company, contact, phone, and email are required." }, { status: 400 });
   }
+
+  return Response.json({
+    success: true,
+    id: `TR-${Date.now().toString().slice(-5)}`,
+    message: "Demo trade request received. Data is not permanently stored.",
+  });
 }
 
 export async function GET() {
-  try {
-    const rows = await db
-      .select()
-      .from(contractorSubmissions)
-      .orderBy(desc(contractorSubmissions.createdAt));
-    return Response.json(rows);
-  } catch (error) {
-    console.error("Fetch contractor submissions error:", error);
-    return Response.json([], { status: 500 });
-  }
+  return Response.json(contractorRequests);
 }
