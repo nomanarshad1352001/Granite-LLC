@@ -76,6 +76,13 @@ export function Header() {
         </nav>
 
         <div className="hidden items-center gap-2 xl:flex">
+          <Link
+            href="/admin/login"
+            className="inline-flex items-center gap-2 rounded-full border border-[#d6c8b7] bg-[#fffdf9] px-4 py-2.5 text-[10px] font-bold uppercase tracking-[0.1em] text-[#493b32] shadow-sm transition hover:border-[#b28a52] hover:bg-[#faf6ec]"
+          >
+            <LayoutDashboard size={14} className="text-[#8c693d]" />
+            Admin Panel
+          </Link>
           <Link href="/estimate" className="rounded-full bg-[#c9ad70] px-5 py-2.5 text-[10px] font-bold uppercase tracking-[0.12em] text-[#11120f] shadow-[0_12px_35px_-16px_rgba(201,173,112,.55)] transition hover:bg-[#dfc98d]">Request consultation</Link>
         </div>
         <button onClick={() => setMobileOpen((value) => !value)} className="rounded-xl border border-[#2d342e] p-2.5 text-[#d7d2c9] transition hover:border-[#65583d] xl:hidden" aria-label="Toggle menu">{mobileOpen ? <X size={20} /> : <Menu size={20} />}</button>
@@ -84,7 +91,7 @@ export function Header() {
       {mobileOpen && (
         <div className="max-h-[calc(100vh-110px)] overflow-y-auto border-t border-white/[0.06] bg-[#0d100e] px-4 py-4 xl:hidden">
           {navItems.map((item) => <div key={item.label}>{item.children ? <><button onClick={() => setOpenDropdown(openDropdown === item.label ? null : item.label)} className="flex w-full items-center justify-between rounded-xl px-3 py-3 text-left text-xs font-semibold uppercase tracking-wider text-[#c2beb6]"><span>{item.label}</span><ChevronDown size={14} className={`transition ${openDropdown === item.label ? "rotate-180" : ""}`} /></button>{openDropdown === item.label && <div className="mb-2 grid gap-1 pl-3">{item.children.map((child) => <Link key={child.href} href={child.href} onClick={() => setMobileOpen(false)} className="rounded-xl border-l border-[#343b35] px-4 py-2.5 text-xs text-[#8e8a83] hover:border-[#c9ad70] hover:bg-white/[0.03] hover:text-[#f4f0e8]">{child.label}</Link>)}</div>}</> : <Link href={item.href!} onClick={() => setMobileOpen(false)} className="block rounded-xl px-3 py-3 text-xs font-semibold uppercase tracking-wider text-[#c2beb6] hover:bg-white/[0.03]">{item.label}</Link>}</div>)}
-          <div className="mt-3 grid gap-2 border-t border-[#29312b] pt-4"><Link href="/estimate" onClick={() => setMobileOpen(false)} className="rounded-xl bg-[#c9ad70] px-5 py-3 text-center text-xs font-semibold text-[#11120f]">Request consultation</Link><Link href="/admin/login" onClick={() => setMobileOpen(false)} className="flex items-center justify-center gap-2 rounded-xl border border-[#343b35] px-5 py-3 text-xs font-semibold text-[#aaa49b]"><LayoutDashboard size={14} /> Admin studio</Link></div>
+          <div className="mt-3 grid gap-2 border-t border-[#29312b] pt-4"><Link href="/estimate" onClick={() => setMobileOpen(false)} className="rounded-xl bg-[#c9ad70] px-5 py-3 text-center text-xs font-semibold text-[#11120f]">Request consultation</Link><Link href="/admin/login" onClick={() => setMobileOpen(false)} className="flex items-center justify-center gap-2 rounded-xl border border-[#343b35] px-5 py-3 text-xs font-semibold text-[#aaa49b]"><LayoutDashboard size={14} /> Admin Panel</Link></div>
         </div>
       )}
     </header>
