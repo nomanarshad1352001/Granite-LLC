@@ -1,22 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-labelledby="title desc">
+  <title id="title">House of Granite monogram</title>
+  <desc id="desc">Architectural HG crest in obsidian, forest, and antique brass</desc>
   <defs>
-    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#d99a2b"/>
-      <stop offset="100%" style="stop-color:#c07a21"/>
+    <linearGradient id="field" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1c392f"/>
+      <stop offset=".48" stop-color="#111512"/>
+      <stop offset="1" stop-color="#090b0a"/>
+    </linearGradient>
+    <linearGradient id="brass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ead89e"/>
+      <stop offset=".48" stop-color="#c9ad70"/>
+      <stop offset="1" stop-color="#927847"/>
     </linearGradient>
   </defs>
-  <!-- Background -->
-  <rect width="200" height="200" rx="24" fill="#1a1a1a"/>
-  <!-- House shape -->
-  <path d="M100 35 L160 80 L160 155 L40 155 L40 80 Z" fill="none" stroke="url(#goldGrad)" stroke-width="6" stroke-linejoin="round"/>
-  <!-- Roof accent -->
-  <path d="M100 35 L160 80 L40 80 Z" fill="url(#goldGrad)" opacity="0.2"/>
-  <!-- Door -->
-  <rect x="85" y="110" width="30" height="45" rx="4" fill="url(#goldGrad)"/>
-  <!-- Window left -->
-  <rect x="52" y="95" width="22" height="22" rx="3" fill="none" stroke="url(#goldGrad)" stroke-width="3"/>
-  <!-- Window right -->
-  <rect x="126" y="95" width="22" height="22" rx="3" fill="none" stroke="url(#goldGrad)" stroke-width="3"/>
-  <!-- HG Letters -->
-  <text x="100" y="185" text-anchor="middle" fill="url(#goldGrad)" font-family="Georgia, serif" font-size="24" font-weight="bold">HG</text>
+  <rect x="7" y="7" width="186" height="186" rx="46" fill="url(#field)"/>
+  <rect x="14" y="14" width="172" height="172" rx="39" fill="none" stroke="#405d51" stroke-width="2"/>
+  <rect x="18" y="18" width="164" height="164" rx="35" fill="none" stroke="url(#brass)" stroke-width="1" opacity=".4"/>
+  <path d="M44 82 100 39l56 43" fill="none" stroke="url(#brass)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M55 78v66h90V78" fill="none" stroke="#6d8b7d" stroke-width="3" opacity=".72"/>
+  <text x="100" y="126" text-anchor="middle" fill="url(#brass)" font-family="Georgia, serif" font-size="53" font-weight="700" letter-spacing="-7">HG</text>
+  <path d="M61 145c13-6 25 5 39-1 14-6 26 5 39-1" fill="none" stroke="#c9ad70" stroke-width="2" opacity=".74"/>
+  <path d="M65 152c12-5 23 4 35-1 13-5 24 4 35-1" fill="none" stroke="#405d51" stroke-width="1.5"/>
+  <circle cx="42" cy="104" r="2.4" fill="#c9ad70"/>
+  <circle cx="158" cy="104" r="2.4" fill="#c9ad70"/>
+  <text x="100" y="174" text-anchor="middle" fill="#c9ad70" font-family="Arial, sans-serif" font-size="8" font-weight="700" letter-spacing="3">EST. 2009</text>
 </svg>

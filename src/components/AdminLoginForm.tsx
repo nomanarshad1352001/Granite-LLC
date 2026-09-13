@@ -61,13 +61,15 @@ export function AdminLoginForm() {
   };
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#0d1513]">
+    <div className="admin-theme relative min-h-screen overflow-hidden bg-[#0d100e]">
       <div className="pointer-events-none absolute -left-40 top-20 h-[520px] w-[520px] rounded-full bg-emerald-700/20 blur-[130px]" />
       <div className="pointer-events-none absolute -right-52 bottom-0 h-[620px] w-[620px] rounded-full bg-gold-500/15 blur-[150px]" />
 
       <div className="relative grid min-h-screen lg:grid-cols-[1.08fr_0.92fr]">
-        <section className="hidden flex-col justify-between border-r border-white/10 p-10 lg:flex xl:p-14">
-          <Link href="/" className="inline-flex w-fit items-center gap-3 text-white">
+        <section className="relative hidden flex-col justify-between overflow-hidden border-r border-white/10 p-10 lg:flex xl:p-14">
+          <img src={IMAGES.kitchens[4]} alt="Luxury kitchen interior" className="absolute inset-0 h-full w-full object-cover opacity-20 grayscale-[20%]" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#090b0a]/95 via-[#0d100e]/90 to-[#1c392f]/75" />
+          <Link href="/" className="relative z-10 inline-flex w-fit items-center gap-3 text-white">
             <img src={IMAGES.logo} alt="House of Granite" className="h-12 w-12 rounded-xl shadow-2xl" />
             <div>
               <div className="font-semibold tracking-tight">House of Granite</div>
@@ -75,7 +77,7 @@ export function AdminLoginForm() {
             </div>
           </Link>
 
-          <div className="max-w-xl py-16">
+          <div className="relative z-10 max-w-xl py-16">
             <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-gold-300/20 bg-gold-300/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-gold-300">
               <Sparkles size={14} /> Premium operations workspace
             </div>
@@ -100,48 +102,48 @@ export function AdminLoginForm() {
             </div>
           </div>
 
-          <div className="flex items-center justify-between text-xs text-white/35">
+          <div className="relative z-10 flex items-center justify-between text-xs text-white/35">
             <span>House of Granite Studio</span>
             <span className="flex items-center gap-1.5"><ShieldCheck size={13} /> Secure demo workspace</span>
           </div>
         </section>
 
-        <section className="flex items-center justify-center bg-[#f4f1e9] px-5 py-10 sm:px-10">
+        <section className="flex items-center justify-center bg-[#111512] px-5 py-10 sm:px-10">
           <div className="w-full max-w-md">
             <div className="mb-8 flex items-center justify-between lg:hidden">
-              <Link href="/" className="flex items-center gap-2 text-sm font-semibold text-[#16221f]">
+              <Link href="/" className="flex items-center gap-2 text-sm font-semibold text-[#f4f0e8]">
                 <img src={IMAGES.logo} alt="House of Granite" className="h-10 w-10 rounded-xl" />
                 House of Granite
               </Link>
-              <Link href="/" className="rounded-full border border-[#d8d2c5] p-2.5 text-[#56635f] hover:bg-white" aria-label="Back to website">
+              <Link href="/" className="rounded-full border border-[#3a463f] p-2.5 text-[#d7d2c9] hover:bg-white" aria-label="Back to website">
                 <ArrowLeft size={16} />
               </Link>
             </div>
 
-            <div className="rounded-[28px] border border-white bg-white/80 p-7 shadow-[0_24px_80px_-32px_rgba(20,34,30,.35)] backdrop-blur-xl sm:p-9">
+            <div className="rounded-[28px] border border-[#303831] bg-[#111512]/95 p-7 shadow-[0_28px_90px_-28px_rgba(0,0,0,.85)] backdrop-blur-xl sm:p-9">
               <div className="mb-8">
-                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#163f36] text-[#e8cb78] shadow-lg shadow-emerald-950/15">
+                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#0d100e] text-[#d8bd80] shadow-lg shadow-emerald-950/15">
                   <LayoutDashboard size={22} />
                 </div>
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#b07e27]">Admin portal</p>
-                <h2 className="mt-2 text-3xl font-semibold tracking-[-0.035em] text-[#14201d]">Welcome back</h2>
-                <p className="mt-2 text-sm leading-6 text-[#6e7874]">Sign in to review leads, designs, projects, and website content.</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#d8bd80]">Admin portal</p>
+                <h2 className="mt-2 text-3xl font-semibold tracking-[-0.035em] text-[#f4f0e8]">Welcome back</h2>
+                <p className="mt-2 text-sm leading-6 text-[#aaa49b]">Sign in to review leads, designs, projects, and website content.</p>
               </div>
 
               <form onSubmit={submit} className="space-y-5">
                 <div>
-                  <label htmlFor="admin-email" className="mb-2 block text-xs font-semibold text-[#394642]">Email address</label>
+                  <label htmlFor="admin-email" className="mb-2 block text-xs font-semibold text-[#d7d2c9]">Email address</label>
                   <div className="relative">
                     <input
                       id="admin-email"
                       type="email"
                       value={email}
                       onChange={(event) => setEmail(event.target.value)}
-                      className="h-12 w-full rounded-xl border border-[#d9dedb] bg-white px-4 pr-11 text-sm text-[#17231f] outline-none transition placeholder:text-[#a6afab] focus:border-[#3f806f] focus:ring-4 focus:ring-[#3f806f]/10"
+                      className="h-12 w-full rounded-xl border border-[#38453d] bg-white px-4 pr-11 text-sm text-[#f4f0e8] outline-none transition placeholder:text-[#77746e] focus:border-[#68867a] focus:ring-4 focus:ring-[#39473f]/10"
                       autoComplete="email"
                       required
                     />
-                    <button type="button" onClick={() => copyValue("email", email)} className="absolute right-2 top-2 flex h-8 w-8 items-center justify-center rounded-lg text-[#8a9490] hover:bg-[#f2f4f3] hover:text-[#183f36]" aria-label="Copy email">
+                    <button type="button" onClick={() => copyValue("email", email)} className="absolute right-2 top-2 flex h-8 w-8 items-center justify-center rounded-lg text-[#8e8a83] hover:bg-[#111512] hover:text-[#f4f0e8]" aria-label="Copy email">
                       {copied === "email" ? <Check size={15} /> : <Copy size={15} />}
                     </button>
                   </div>
@@ -149,8 +151,8 @@ export function AdminLoginForm() {
 
                 <div>
                   <div className="mb-2 flex items-center justify-between">
-                    <label htmlFor="admin-password" className="text-xs font-semibold text-[#394642]">Password</label>
-                    <span className="text-[11px] text-[#88928e]">Demo access</span>
+                    <label htmlFor="admin-password" className="text-xs font-semibold text-[#d7d2c9]">Password</label>
+                    <span className="text-[11px] text-[#8e8a83]">Demo access</span>
                   </div>
                   <div className="relative">
                     <input
@@ -158,15 +160,15 @@ export function AdminLoginForm() {
                       type={showPassword ? "text" : "password"}
                       value={password}
                       onChange={(event) => setPassword(event.target.value)}
-                      className="h-12 w-full rounded-xl border border-[#d9dedb] bg-white px-4 pr-20 text-sm text-[#17231f] outline-none transition focus:border-[#3f806f] focus:ring-4 focus:ring-[#3f806f]/10"
+                      className="h-12 w-full rounded-xl border border-[#38453d] bg-white px-4 pr-20 text-sm text-[#f4f0e8] outline-none transition focus:border-[#68867a] focus:ring-4 focus:ring-[#39473f]/10"
                       autoComplete="current-password"
                       required
                     />
                     <div className="absolute right-2 top-2 flex">
-                      <button type="button" onClick={() => copyValue("password", password)} className="flex h-8 w-8 items-center justify-center rounded-lg text-[#8a9490] hover:bg-[#f2f4f3] hover:text-[#183f36]" aria-label="Copy password">
+                      <button type="button" onClick={() => copyValue("password", password)} className="flex h-8 w-8 items-center justify-center rounded-lg text-[#8e8a83] hover:bg-[#111512] hover:text-[#f4f0e8]" aria-label="Copy password">
                         {copied === "password" ? <Check size={15} /> : <Copy size={15} />}
                       </button>
-                      <button type="button" onClick={() => setShowPassword((value) => !value)} className="flex h-8 w-8 items-center justify-center rounded-lg text-[#8a9490] hover:bg-[#f2f4f3] hover:text-[#183f36]" aria-label="Toggle password visibility">
+                      <button type="button" onClick={() => setShowPassword((value) => !value)} className="flex h-8 w-8 items-center justify-center rounded-lg text-[#8e8a83] hover:bg-[#111512] hover:text-[#f4f0e8]" aria-label="Toggle password visibility">
                         {showPassword ? <EyeOff size={15} /> : <Eye size={15} />}
                       </button>
                     </div>
@@ -180,7 +182,7 @@ export function AdminLoginForm() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="group flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#153f35] text-sm font-semibold text-white shadow-lg shadow-emerald-950/15 transition hover:bg-[#1d5548] disabled:cursor-not-allowed disabled:opacity-65"
+                  className="group flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#c9ad70] text-sm font-semibold text-[#11120f] shadow-[0_16px_38px_-18px_rgba(201,173,112,.5)] transition hover:bg-[#dfc98d] disabled:cursor-not-allowed disabled:opacity-65"
                 >
                   {loading ? (
                     <><span className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" /> Starting workspace…</>
@@ -190,19 +192,19 @@ export function AdminLoginForm() {
                 </button>
               </form>
 
-              <div className="mt-6 rounded-2xl border border-[#eadfbf] bg-[#fffaf0] p-4">
+              <div className="mt-6 rounded-2xl border border-[#34372f] bg-[#181811] p-4">
                 <div className="flex items-start gap-3">
-                  <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#f4e6bd] text-[#92671f]"><LockKeyhole size={15} /></div>
+                  <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-[#65583d] bg-[#201d14] text-[#d8bd80]"><LockKeyhole size={15} /></div>
                   <div>
-                    <p className="text-xs font-semibold text-[#51452f]">Demo credentials are prefilled</p>
-                    <p className="mt-1 text-[11px] leading-5 text-[#81765f]">This presentation uses mock data and does not require PostgreSQL or an external authentication provider.</p>
+                    <p className="text-xs font-semibold text-[#f4f0e8]">Demo credentials are prefilled</p>
+                    <p className="mt-1 text-[11px] leading-5 text-[#aaa49b]">This presentation uses mock data and does not require PostgreSQL or an external authentication provider.</p>
                   </div>
                 </div>
               </div>
             </div>
 
             <div className="mt-6 text-center">
-              <Link href="/platform" className="text-xs font-medium text-[#5c6a66] hover:text-[#153f35]">View platform features &amp; technology →</Link>
+              <Link href="/platform" className="text-xs font-medium text-[#aaa49b] hover:text-[#f4f0e8]">View platform features &amp; technology →</Link>
             </div>
           </div>
         </section>

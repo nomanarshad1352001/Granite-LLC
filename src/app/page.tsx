@@ -1,637 +1,174 @@
 import Link from "next/link";
-import { IMAGES, DUMMY_DATA } from "@/lib/images";
 import {
-  Star,
-  Shield,
-  Clock,
-  Award,
-  Phone,
   ArrowRight,
-  CheckCircle,
-  Ruler,
-  Hammer,
-  Home,
-  Paintbrush,
-  Sparkles,
-  Users,
-  Play,
-  MapPin,
-  Calendar,
-  Flame,
-  Grid3X3,
+  Award,
+  Bath,
+  Check,
   ChevronRight,
   Gem,
-  Zap,
+  Hammer,
+  Home,
+  MoveRight,
+  Phone,
+  Play,
+  Quote,
+  Ruler,
+  ShieldCheck,
+  Sparkles,
+  Star,
 } from "lucide-react";
+import { BeforeAfterReveal } from "@/components/BeforeAfterReveal";
+import { PricingPreview } from "@/components/PricingPreview";
+import { ReviewRail } from "@/components/ReviewRail";
+import { ServiceAreaRail } from "@/components/ServiceAreaRail";
+import { DUMMY_DATA, IMAGES } from "@/lib/images";
 
 const services = [
-  { icon: Ruler, title: "Countertops", desc: "Granite, quartz, quartzite & marble countertops — expertly fabricated and installed.", href: "/countertops", img: IMAGES.kitchens[0], features: ["Free Templating", "Custom Edges", "Same-Week Install"] },
-  { icon: Home, title: "Kitchen Remodeling", desc: "Full kitchen renovations including cabinets, countertops, backsplash & more.", href: "/kitchen-remodeling", img: IMAGES.kitchens[1], features: ["Full Design", "Project Management", "Turnkey Solutions"] },
-  { icon: Paintbrush, title: "Bathroom Remodeling", desc: "Walk-in showers, vanities, tile work, and complete bathroom transformations.", href: "/bathroom-remodeling", img: IMAGES.bathrooms[0], features: ["Custom Showers", "Vanity Tops", "Tile Installation"] },
-  { icon: Hammer, title: "Cabinets", desc: "Custom cabinet installation and replacement for kitchens and bathrooms.", href: "/cabinets", img: IMAGES.kitchens[5], features: ["Soft-Close", "Custom Sizes", "Quality Hardware"] },
-  { icon: Grid3X3, title: "Backsplash", desc: "Beautiful tile backsplash installation to complete your kitchen design.", href: "/backsplash", img: IMAGES.backsplash[1], features: ["Subway Tile", "Mosaic", "Natural Stone"] },
-  { icon: Flame, title: "Fireplace Surrounds", desc: "Stunning stone and marble fireplace surrounds that transform any room.", href: "/fireplace", img: IMAGES.fireplace[0], features: ["Marble", "Granite", "Custom Design"] },
+  { title: "Bespoke countertops", eyebrow: "Natural & engineered stone", description: "Precision-templated granite, quartz, quartzite, and marble—fabricated to honor the architecture of your home.", href: "/countertops", image: IMAGES.kitchens[0], number: "01" },
+  { title: "Kitchen transformations", eyebrow: "Design · Build · Coordinate", description: "A considered renovation experience spanning layouts, cabinetry, surfaces, lighting, plumbing, and installation.", href: "/kitchen-remodeling", image: IMAGES.kitchens[4], number: "02" },
+  { title: "Bathroom retreats", eyebrow: "Tile · Vanities · Showers", description: "Layered material palettes, custom showers, tailored vanities, and careful coordination from demolition through reveal.", href: "/bathroom-remodeling", image: IMAGES.bathrooms[0], number: "03" },
+  { title: "Cabinetry & details", eyebrow: "Storage with intention", description: "Cabinet systems, islands, backsplashes, sinks, and finishing details that make a room feel complete.", href: "/cabinets", image: IMAGES.kitchens[5], number: "04" },
 ];
-
-const whyUs = [
-  { icon: Award, title: "15+ Years", subtitle: "Experience", desc: "Trusted craftsmanship since 2009.", stat: "15+" },
-  { icon: Users, title: "2,500+", subtitle: "Projects Done", desc: "Completed throughout the region.", stat: "2.5K" },
-  { icon: Star, title: "4.9 / 5", subtitle: "Rating", desc: "Consistently excellent reviews.", stat: "4.9" },
-  { icon: Clock, title: "98%", subtitle: "On-Time", desc: "We respect your timeline.", stat: "98%" },
-];
-
-const featuredReviews = DUMMY_DATA.reviews.slice(0, 6);
 
 const materials = [
-  { name: "Granite", img: IMAGES.countertops[3], href: "/materials/granite", tag: "Most Popular" },
-  { name: "Quartz", img: IMAGES.countertops[1], href: "/materials/quartz", tag: "Low Maintenance" },
-  { name: "Quartzite", img: IMAGES.countertops[2], href: "/materials/quartzite", tag: "Premium" },
-  { name: "Marble", img: IMAGES.countertops[4], href: "/materials/marble", tag: "Timeless" },
+  { name: "Granite", note: "Natural character", href: "/materials/granite", image: IMAGES.countertops[3] },
+  { name: "Quartz", note: "Quiet consistency", href: "/materials/quartz", image: IMAGES.countertops[1] },
+  { name: "Quartzite", note: "Rare movement", href: "/materials/quartzite", image: IMAGES.countertops[2] },
+  { name: "Marble", note: "Timeless patina", href: "/materials/marble", image: IMAGES.countertops[4] },
+];
+
+const process = [
+  { number: "I", title: "Discover", text: "We listen to how you live, what the room needs to do, and how you want it to feel." },
+  { number: "II", title: "Define", text: "Measurements, materials, scope, allowances, and timing become a clear written proposal." },
+  { number: "III", title: "Craft", text: "Your project moves through procurement, templating, fabrication, and coordinated preparation." },
+  { number: "IV", title: "Reveal", text: "Experienced installers complete the work, protect your home, and walk through every detail." },
 ];
 
 export default function HomePage() {
   return (
     <>
-      {/* ═══════════════ HERO ═══════════════ */}
-      <section className="relative min-h-[100vh] flex items-center overflow-hidden">
-        {/* Background */}
-        <div className="absolute inset-0">
-          <img src={IMAGES.hero} alt="" className="w-full h-full object-cover" />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-granite-950 via-granite-950/85 to-granite-950/50" />
-        <div className="absolute inset-0 bg-gradient-to-t from-granite-950 via-transparent to-granite-950/30" />
+      {/* Hero */}
+      <section className="relative min-h-[820px] overflow-hidden bg-[#17110e] text-white lg:min-h-[calc(100vh-112px)]">
+        <img src={IMAGES.hero} alt="Tailored luxury kitchen by House of Granite" className="absolute inset-0 h-full w-full object-cover object-center" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#17110e]/95 via-[#17110e]/68 to-[#17110e]/15" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#17110e]/80 via-transparent to-[#17110e]/20" />
+        <div className="absolute left-[58%] top-[18%] hidden h-[55%] w-px bg-gradient-to-b from-transparent via-white/25 to-transparent lg:block" />
 
-        {/* Decorative elements */}
-        <div className="absolute top-20 right-20 w-72 h-72 bg-gold-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-40 left-10 w-96 h-96 bg-gold-400/5 rounded-full blur-3xl" />
-
-        <div className="relative max-w-7xl mx-auto px-4 py-20 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-7 animate-fade-up">
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 glass rounded-full px-5 py-2.5 text-sm font-medium mb-8">
-                <Sparkles size={16} className="text-gold-400" />
-                <span className="text-white/90">Trusted by 2,500+ Homeowners &amp; Contractors</span>
-              </div>
-
-              {/* Main Heading */}
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-[1.05] mb-6 tracking-tight">
-                Transform Your
-                <br />
-                Home with{" "}
-                <span className="shimmer-text">Premium Stone</span>
+        <div className="relative mx-auto flex min-h-[820px] max-w-7xl items-center px-4 py-24 lg:min-h-[calc(100vh-112px)]">
+          <div className="grid w-full gap-16 lg:grid-cols-[1.12fr_.88fr] lg:items-end">
+            <div className="animate-fade-up max-w-3xl">
+              <div className="mb-8 flex items-center gap-4"><span className="h-px w-10 bg-[#c7a66c]" /><span className="text-[10px] font-semibold uppercase tracking-[.28em] text-[#d7bd8a]">Countertops · Kitchens · Baths</span></div>
+              <h1 className="text-5xl leading-[.98] tracking-[-.05em] text-[#fffdf9] sm:text-6xl lg:text-[82px]">
+                Rooms of<br />lasting <span className="italic text-[#d6bd8e]">character.</span>
               </h1>
-
-              <p className="text-lg md:text-xl text-granite-300 mb-10 leading-relaxed max-w-xl">
-                From stunning granite and quartz countertops to complete kitchen and bathroom
-                renovations — House of Granite delivers exceptional craftsmanship you can trust.
-              </p>
-
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 mb-12">
-                <Link
-                  href="/estimate"
-                  className="group relative inline-flex items-center justify-center gap-3 bg-gradient-to-r from-gold-500 to-gold-600 text-white px-8 py-5 rounded-2xl font-semibold text-lg transition-all shadow-2xl shadow-gold-500/30 hover:shadow-gold-500/50 hover:scale-[1.02] overflow-hidden"
-                >
-                  <span className="relative z-10 flex items-center gap-3">
-                    Get a Free Estimate
-                    <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                  </span>
-                </Link>
-                <Link
-                  href="/kitchen-design-tool"
-                  className="group inline-flex items-center justify-center gap-3 glass hover:bg-white/15 text-white px-8 py-5 rounded-2xl font-semibold text-lg transition-all"
-                >
-                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center group-hover:bg-white/30 transition">
-                    <Play size={18} className="ml-0.5" />
-                  </div>
-                  Design Your Kitchen
-                </Link>
+              <p className="mt-8 max-w-xl text-base leading-8 text-white/60 sm:text-lg">Premium stonework and complete remodeling, brought together through measured design, skilled fabrication, and thoughtful project care.</p>
+              <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+                <Link href="/estimate" className="group inline-flex items-center justify-center gap-3 rounded-full bg-[#c6a66c] px-7 py-4 text-xs font-bold uppercase tracking-[.12em] text-[#21170f] shadow-[0_20px_48px_-22px_rgba(198,166,108,.65)] transition hover:bg-[#dfc896]">Begin a consultation <ArrowRight size={15} className="transition group-hover:translate-x-1" /></Link>
+                <Link href="/gallery" className="inline-flex items-center justify-center gap-3 rounded-full border border-white/20 bg-white/[.06] px-7 py-4 text-xs font-semibold uppercase tracking-[.12em] text-white backdrop-blur-md transition hover:bg-white/10"><Play size={14} /> View our work</Link>
               </div>
-
-              {/* Trust Bar */}
-              <div className="flex flex-wrap items-center gap-8">
-                <div className="flex items-center gap-2">
-                  <div className="flex -space-x-3">
-                    {["SM","JK","ML","DR","JH"].map((init, i) => (
-                      <div key={i} className="w-10 h-10 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 border-2 border-granite-950 flex items-center justify-center text-[10px] text-white font-bold">
-                        {init}
-                      </div>
-                    ))}
-                  </div>
-                  <div className="text-sm text-granite-300 ml-1">
-                    <span className="font-semibold text-white">2,500+</span> happy customers
-                  </div>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="flex gap-0.5">
-                    {[1,2,3,4,5].map((i) => (
-                      <Star key={i} size={16} className="fill-gold-400 text-gold-400" />
-                    ))}
-                  </div>
-                  <span className="text-sm text-granite-300 font-semibold">4.9/5</span>
-                </div>
+              <div className="mt-12 flex flex-wrap gap-x-7 gap-y-3 text-[10px] uppercase tracking-[.12em] text-white/45">
+                <span className="flex items-center gap-2"><Check size={12} className="text-[#d6bd8e]" /> Licensed &amp; insured</span>
+                <span className="flex items-center gap-2"><Check size={12} className="text-[#d6bd8e]" /> 15+ years of craft</span>
+                <span className="flex items-center gap-2"><Check size={12} className="text-[#d6bd8e]" /> Warranty-backed work</span>
               </div>
             </div>
 
-            {/* Right side floating cards */}
-            <div className="lg:col-span-5 hidden lg:flex flex-col gap-4 animate-fade-right">
-              <div className="glass rounded-2xl p-5 animate-float">
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-xl overflow-hidden shrink-0">
-                    <img src={IMAGES.kitchens[2]} alt="" className="w-full h-full object-cover" />
-                  </div>
-                  <div>
-                    <p className="text-white font-semibold text-sm">Latest Project</p>
-                    <p className="text-granite-400 text-xs">Modern Kitchen Remodel — Springfield</p>
-                  </div>
-                  <span className="ml-auto bg-green-500/20 text-green-400 text-xs font-bold px-2.5 py-1 rounded-full">NEW</span>
-                </div>
-              </div>
-
-              <div className="glass rounded-2xl p-5 ml-8" style={{ animationDelay: "1s", animation: "float 3s ease-in-out 1s infinite" }}>
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-gold-500/20 rounded-xl flex items-center justify-center">
-                    <Star className="text-gold-400" size={22} />
-                  </div>
-                  <div>
-                    <p className="text-white font-semibold text-sm">⭐ 5-Star Review</p>
-                    <p className="text-granite-400 text-xs">&ldquo;Absolutely beautiful work!&rdquo;</p>
-                    <p className="text-granite-500 text-[10px] mt-0.5">— Sarah M., Springfield</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="glass rounded-2xl p-5 ml-4" style={{ animationDelay: "2s", animation: "float 3s ease-in-out 2s infinite" }}>
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center">
-                    <CheckCircle className="text-green-400" size={22} />
-                  </div>
-                  <div>
-                    <p className="text-white font-semibold text-sm">Free Consultation</p>
-                    <p className="text-granite-400 text-xs">Book yours today — no obligation</p>
-                  </div>
-                </div>
+            <div className="hidden justify-end pb-2 lg:flex">
+              <div className="w-[330px] border-l border-white/15 pl-8">
+                <Quote size={26} className="text-[#c6a66c]" />
+                <p className="mt-5 font-[Georgia] text-xl leading-8 text-white/85">“The details feel intentional. The entire room finally belongs to the house.”</p>
+                <div className="mt-5 flex items-center justify-between border-t border-white/15 pt-5"><div><p className="text-xs font-semibold text-white">Sarah M.</p><p className="mt-1 text-[9px] uppercase tracking-wider text-white/40">Verified kitchen client</p></div><div className="flex gap-0.5">{[1,2,3,4,5].map((item) => <Star key={item} size={11} className="fill-[#c6a66c] text-[#c6a66c]" />)}</div></div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40">
-          <span className="text-[10px] uppercase tracking-[0.3em]">Explore</span>
-          <div className="w-5 h-8 border-2 border-white/25 rounded-full flex items-start justify-center p-1">
-            <div className="w-1 h-2 bg-gold-400 rounded-full animate-bounce" />
+        <div className="absolute bottom-0 left-0 right-0 border-t border-white/10 bg-black/15 backdrop-blur-md"><div className="mx-auto grid max-w-7xl grid-cols-2 divide-x divide-white/10 px-4 sm:grid-cols-4">{[
+          ["2,500+", "Completed projects"], ["4.9 / 5", "Client rating"], ["98%", "On-time delivery"], ["45 mi", "Service radius"],
+        ].map(([value,label]) => <div key={label} className="px-4 py-5 text-center"><p className="font-[Georgia] text-xl text-white sm:text-2xl">{value}</p><p className="mt-1 text-[8px] uppercase tracking-[.16em] text-white/40">{label}</p></div>)}</div></div>
+      </section>
+
+      {/* Brand statement */}
+      <section className="bg-[#f8f5ef] py-24 sm:py-28">
+        <div className="mx-auto grid max-w-7xl gap-12 px-4 lg:grid-cols-[.65fr_1.35fr] lg:items-start">
+          <div className="flex items-center gap-3 pt-2 text-[10px] font-semibold uppercase tracking-[.22em] text-[#9a7546]"><Sparkles size={12} /> House of Granite</div>
+          <div>
+            <h2 className="max-w-4xl text-4xl leading-[1.15] text-[#2a211b] sm:text-5xl lg:text-[58px]">We shape enduring materials into rooms that feel <span className="italic text-[#826a51]">inevitable.</span></h2>
+            <div className="mt-10 grid gap-8 border-t border-[#ddd2c4] pt-8 sm:grid-cols-2"><p className="text-sm leading-7 text-[#796d61]">Our work starts with proportion, function, and honest material. Every edge, opening, seam, fixture, and transition is considered as part of the whole room.</p><p className="text-sm leading-7 text-[#796d61]">Homeowners receive one clear process from early ideas through measurement, fabrication, trade coordination, installation, and final walkthrough.</p></div>
           </div>
         </div>
       </section>
 
-      {/* ═══════════════ STATS BAR ═══════════════ */}
-      <section className="relative z-10 -mt-12">
-        <div className="max-w-5xl mx-auto px-4">
-          <div className="bg-white rounded-2xl shadow-2xl shadow-granite-900/10 border border-granite-100 grid grid-cols-2 md:grid-cols-4 divide-x divide-granite-100">
-            {whyUs.map((item, i) => (
-              <div key={item.title} className={`p-6 md:p-8 text-center animate-count-up delay-${(i+1)*100}`}>
-                <div className="w-12 h-12 bg-gradient-to-br from-gold-100 to-gold-200 rounded-xl flex items-center justify-center mx-auto mb-3">
-                  <item.icon className="text-gold-700" size={22} />
-                </div>
-                <div className="text-2xl md:text-3xl font-extrabold text-granite-950">{item.title}</div>
-                <div className="text-xs text-granite-500 font-medium uppercase tracking-wider mt-1">{item.subtitle}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Services */}
+      <section className="bg-[#fffdf9] py-24 sm:py-28">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="mb-14 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between"><div><p className="text-[10px] font-semibold uppercase tracking-[.22em] text-[#9a7546]">The house, considered</p><h2 className="mt-3 text-4xl text-[#2a211b] sm:text-5xl">Our areas of craft.</h2></div><Link href="/our-process" className="group inline-flex items-center gap-2 text-xs font-semibold text-[#6b5746]">How we work <MoveRight size={15} className="transition group-hover:translate-x-1" /></Link></div>
 
-      {/* ═══════════════ SERVICES ═══════════════ */}
-      <section className="py-28 bg-gradient-to-b from-white via-granite-50/50 to-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <span className="inline-flex items-center gap-2 text-gold-600 font-semibold text-sm uppercase tracking-widest mb-4">
-              <Gem size={14} /> What We Do
-            </span>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-granite-950 mb-5 tracking-tight">
-              Our Services
-            </h2>
-            <p className="text-granite-500 text-lg max-w-2xl mx-auto">
-              Complete remodeling solutions from countertop fabrication to full
-              kitchen and bathroom renovations.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
-            {services.map((s, i) => (
-              <Link
-                key={s.title}
-                href={s.href}
-                className={`group card-hover bg-white rounded-3xl overflow-hidden border border-granite-100 animate-fade-up delay-${(i+1)*100}`}
-                style={{ opacity: 1 }}
-              >
-                <div className="h-56 img-zoom relative">
-                  <img src={s.img} alt={s.title} className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-granite-950/70 via-granite-950/20 to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4 flex gap-2 flex-wrap">
-                    {s.features.map((f) => (
-                      <span key={f} className="glass-white text-granite-800 text-[11px] font-semibold px-3 py-1 rounded-full">
-                        {f}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-gold-400 to-gold-600 rounded-2xl flex items-center justify-center shrink-0 shadow-lg shadow-gold-500/20">
-                      <s.icon className="text-white" size={22} />
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-granite-950 text-lg mb-1 group-hover:text-gold-700 transition-colors">
-                        {s.title}
-                      </h3>
-                      <p className="text-granite-500 text-sm leading-relaxed">
-                        {s.desc}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="mt-5 pt-4 border-t border-granite-100 flex items-center justify-between">
-                    <span className="text-gold-600 font-semibold text-sm">Explore Service</span>
-                    <div className="w-8 h-8 bg-gold-50 rounded-full flex items-center justify-center group-hover:bg-gold-500 transition-colors">
-                      <ArrowRight size={14} className="text-gold-600 group-hover:text-white transition-colors" />
-                    </div>
-                  </div>
-                </div>
+          <div className="grid gap-5 lg:grid-cols-2">
+            {services.map((service, index) => (
+              <Link key={service.title} href={service.href} className={`group relative overflow-hidden rounded-[28px] ${index === 0 || index === 3 ? "min-h-[520px]" : "min-h-[400px]"}`}>
+                <img src={service.image} alt={service.title} className="absolute inset-0 h-full w-full object-cover transition duration-1000 group-hover:scale-[1.04]" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1c140f]/90 via-[#1c140f]/24 to-transparent" />
+                <span className="absolute right-5 top-5 font-[Georgia] text-sm text-white/45">{service.number}</span>
+                <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8"><p className="text-[9px] font-semibold uppercase tracking-[.2em] text-[#d6bd8e]">{service.eyebrow}</p><h3 className="mt-2 text-3xl text-white">{service.title}</h3><p className="mt-3 max-w-lg text-xs leading-6 text-white/55">{service.description}</p><span className="mt-5 inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-wider text-white">Explore service <ChevronRight size={12} className="transition group-hover:translate-x-1" /></span></div>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ═══════════════ MATERIALS ═══════════════ */}
-      <section className="py-24 bg-granite-950 relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-gold-400/5 rounded-full blur-3xl" />
+      {/* Materials */}
+      <section className="bg-[#211a16] py-24 text-white sm:py-28">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="grid gap-12 lg:grid-cols-[.65fr_1.35fr]"><div><div className="flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[.22em] text-[#d6bd8e]"><Gem size={12} /> Material library</div><h2 className="mt-4 text-4xl text-white sm:text-5xl">Surfaces with a story.</h2><p className="mt-5 max-w-sm text-sm leading-7 text-white/45">Natural movement, quiet consistency, tactile finishes, and the right performance for the room.</p><Link href="/materials" className="mt-7 inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-2.5 text-[10px] font-semibold uppercase tracking-wider text-white/70 transition hover:border-[#c6a66c]/50 hover:text-white">Compare materials <ArrowRight size={12} /></Link></div>
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">{materials.map((material,index) => <Link key={material.name} href={material.href} className={`group relative overflow-hidden rounded-[22px] ${index % 2 ? "mt-10" : "mb-10"}`}><img src={material.image} alt={material.name} className="h-[310px] w-full object-cover opacity-75 transition duration-700 group-hover:scale-105 group-hover:opacity-95" /><div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent" /><div className="absolute inset-x-0 bottom-0 p-4"><h3 className="text-xl text-white">{material.name}</h3><p className="mt-1 text-[9px] uppercase tracking-wider text-[#d6bd8e]">{material.note}</p></div></Link>)}</div></div>
         </div>
-        <div className="max-w-7xl mx-auto px-4 relative">
-          <div className="text-center mb-16">
-            <span className="inline-flex items-center gap-2 text-gold-400 font-semibold text-sm uppercase tracking-widest mb-4">
-              <Gem size={14} /> Premium Materials
-            </span>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-5 tracking-tight">
-              Explore Our Stone Collection
-            </h2>
-            <p className="text-granite-400 text-lg max-w-2xl mx-auto">
-              From natural granite to engineered quartz — find the perfect surface for your space.
-            </p>
-          </div>
+      </section>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
-            {materials.map((m) => (
-              <Link
-                key={m.name}
-                href={m.href}
-                className="group relative rounded-3xl overflow-hidden h-72 card-hover"
-              >
-                <img src={m.img} alt={m.name} className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-granite-950 via-granite-950/50 to-transparent" />
-                <div className="absolute top-4 left-4">
-                  <span className="glass text-white text-[10px] font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">
-                    {m.tag}
-                  </span>
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <h3 className="text-white font-bold text-xl mb-1">{m.name}</h3>
-                  <span className="text-gold-400 text-sm font-medium inline-flex items-center gap-1 group-hover:gap-2 transition-all">
-                    View Details <ChevronRight size={14} />
-                  </span>
-                </div>
-              </Link>
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <Link href="/materials" className="inline-flex items-center gap-2 glass hover:bg-white/10 text-white px-6 py-3 rounded-xl font-semibold transition">
-              Browse All Materials <ArrowRight size={16} />
-            </Link>
+      {/* Transformation */}
+      <section className="material-surface py-24 sm:py-28">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="grid gap-12 lg:grid-cols-[.52fr_1.48fr] lg:items-end">
+            <div className="pb-2"><div className="flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[.22em] text-[#9a7546]"><Home size={12} /> Transformation</div><h2 className="mt-4 text-4xl leading-tight text-[#2a211b] sm:text-5xl">Move the line.<br />See the difference.</h2><p className="mt-5 max-w-sm text-sm leading-7 text-[#796d61]">Drag across the image to compare an existing kitchen with its renewed character.</p><div className="mt-8 border-l border-[#b28a52] pl-5"><p className="font-[Georgia] text-xl text-[#3c3028]">A brighter, more generous kitchen</p><p className="mt-2 text-xs leading-6 text-[#827467]">Replanned circulation · tailored cabinetry · new stone surfaces · layered lighting</p></div></div>
+            <BeforeAfterReveal />
           </div>
         </div>
       </section>
 
-      {/* ═══════════════ WHY CHOOSE US ═══════════════ */}
-      <section className="py-28 bg-white relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-granite-50 to-transparent" />
-        <div className="max-w-7xl mx-auto px-4 relative">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <span className="inline-flex items-center gap-2 text-gold-600 font-semibold text-sm uppercase tracking-widest mb-4">
-                <Shield size={14} /> Why Us
-              </span>
-              <h2 className="text-4xl md:text-5xl font-extrabold text-granite-950 mb-6 tracking-tight leading-tight">
-                Quality You Can Trust,<br />
-                <span className="text-gold-600">Service You Deserve</span>
-              </h2>
-              <p className="text-granite-500 text-lg leading-relaxed mb-8 max-w-lg">
-                For over 15 years, we&apos;ve been transforming homes throughout the region. Our
-                commitment to quality, transparency, and customer satisfaction sets us apart.
-              </p>
-              <div className="space-y-4 mb-10">
-                {[
-                  "Licensed, Insured & BBB A+ Rated",
-                  "Manufacturer Certified Installers",
-                  "Free In-Home Estimates & Consultations",
-                  "Warranty on All Workmanship",
-                  "Financing Options Available",
-                  "Dedicated Project Manager",
-                ].map((item) => (
-                  <div key={item} className="flex items-center gap-3 group">
-                    <div className="w-6 h-6 bg-gradient-to-br from-gold-400 to-gold-600 rounded-full flex items-center justify-center shrink-0">
-                      <CheckCircle size={14} className="text-white" />
-                    </div>
-                    <span className="text-granite-700 font-medium">{item}</span>
-                  </div>
-                ))}
-              </div>
-              <Link
-                href="/about"
-                className="inline-flex items-center gap-2 bg-granite-950 hover:bg-granite-800 text-white px-7 py-4 rounded-2xl font-semibold transition shadow-xl"
-              >
-                Learn About Us <ArrowRight size={18} />
-              </Link>
-            </div>
-
-            {/* Image Grid */}
-            <div className="grid grid-cols-12 grid-rows-6 gap-4 h-[500px]">
-              <div className="col-span-7 row-span-4 rounded-3xl overflow-hidden img-zoom">
-                <img src={IMAGES.kitchens[2]} alt="Kitchen project" className="w-full h-full object-cover" />
-              </div>
-              <div className="col-span-5 row-span-3 rounded-3xl overflow-hidden img-zoom">
-                <img src={IMAGES.bathrooms[1]} alt="Bathroom project" className="w-full h-full object-cover" />
-              </div>
-              <div className="col-span-5 row-span-3 rounded-3xl overflow-hidden img-zoom">
-                <img src={IMAGES.countertops[3]} alt="Countertop" className="w-full h-full object-cover" />
-              </div>
-              <div className="col-span-7 row-span-2 rounded-3xl overflow-hidden img-zoom">
-                <img src={IMAGES.kitchens[5]} alt="Cabinets" className="w-full h-full object-cover" />
-              </div>
-            </div>
-          </div>
+      {/* Why trust */}
+      <section className="bg-[#fffdf9] py-24 sm:py-28">
+        <div className="mx-auto grid max-w-7xl gap-14 px-4 lg:grid-cols-2 lg:items-center">
+          <div className="relative min-h-[560px]"><img src={IMAGES.work[0]} alt="Craftsperson working on a renovation" className="absolute left-0 top-0 h-[82%] w-[82%] rounded-[30px] object-cover" /><img src={IMAGES.countertops[0]} alt="Natural stone slabs" className="absolute bottom-0 right-0 h-[42%] w-[45%] rounded-[24px] border-8 border-[#fffdf9] object-cover" /><div className="absolute bottom-[12%] left-5 rounded-2xl border border-white/20 bg-[#211a16]/85 p-5 text-white backdrop-blur-xl"><Award size={18} className="text-[#d6bd8e]" /><p className="mt-3 font-[Georgia] text-xl">15+ years</p><p className="mt-1 text-[9px] uppercase tracking-wider text-white/45">Local craftsmanship</p></div></div>
+          <div><p className="text-[10px] font-semibold uppercase tracking-[.22em] text-[#9a7546]">Trust is built into the process</p><h2 className="mt-4 text-4xl leading-tight text-[#2a211b] sm:text-5xl">Clear communication.<br />Careful execution.</h2><p className="mt-6 max-w-lg text-sm leading-7 text-[#796d61]">The most beautiful room is only successful when the experience of creating it feels equally considered. That means a clear scope, accountable ownership, respect for your home, and thoughtful follow-through.</p><div className="mt-8 grid gap-3 sm:grid-cols-2">{[
+            [ShieldCheck,"Licensed & insured","Appropriate protection for your home and project."], [Ruler,"Measured precisely","Digital and physical templating for a confident fit."], [Hammer,"Installed carefully","Experienced craftspeople and a clean job site."], [Bath,"Coordinated fully","Design, materials, trades, timing, and final inspection."],
+          ].map(([Icon,title,text]) => { const ItemIcon = Icon as typeof ShieldCheck; return <div key={String(title)} className="rounded-2xl border border-[#e1d7ca] bg-[#f8f5ef] p-5"><ItemIcon size={17} className="text-[#547466]" /><h3 className="mt-4 font-[Inter] text-sm font-semibold tracking-normal text-[#302720]">{String(title)}</h3><p className="mt-2 text-[11px] leading-5 text-[#827467]">{String(text)}</p></div>; })}</div><Link href="/about" className="mt-8 inline-flex items-center gap-2 text-xs font-semibold text-[#6b5746]">Meet House of Granite <ArrowRight size={13} /></Link></div>
         </div>
       </section>
 
-      {/* ═══════════════ BEFORE & AFTER ═══════════════ */}
-      <section className="py-24 bg-gradient-to-b from-granite-50 to-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <span className="inline-flex items-center gap-2 text-gold-600 font-semibold text-sm uppercase tracking-widest mb-4">
-              <Zap size={14} /> Transformations
-            </span>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-granite-950 mb-5 tracking-tight">
-              Before &amp; After
-            </h2>
-            <p className="text-granite-500 text-lg max-w-2xl mx-auto">
-              See the stunning transformations we create for our clients.
-            </p>
-          </div>
+      <PricingPreview />
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {[
-              { before: IMAGES.kitchens[3], after: IMAGES.kitchens[2], title: "Complete Kitchen Renovation", desc: "Quartz countertops, new cabinets, subway tile backsplash" },
-              { before: IMAGES.bathrooms[3], after: IMAGES.bathrooms[0], title: "Master Bathroom Transformation", desc: "Walk-in shower, marble vanity, custom tile work" },
-            ].map((p) => (
-              <div key={p.title} className="card-hover rounded-3xl overflow-hidden bg-white border border-granite-100 shadow-sm">
-                <div className="grid grid-cols-2 h-64">
-                  <div className="relative img-zoom">
-                    <img src={p.before} alt="Before" className="w-full h-full object-cover" />
-                    <span className="absolute top-4 left-4 bg-granite-950/80 backdrop-blur-sm text-white text-[11px] font-bold px-3 py-1.5 rounded-full tracking-wide">BEFORE</span>
-                  </div>
-                  <div className="relative img-zoom">
-                    <img src={p.after} alt="After" className="w-full h-full object-cover" />
-                    <span className="absolute top-4 left-4 bg-gradient-to-r from-gold-500 to-gold-600 text-white text-[11px] font-bold px-3 py-1.5 rounded-full tracking-wide">AFTER</span>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="font-bold text-granite-950 text-lg mb-1">{p.title}</h3>
-                  <p className="text-granite-500 text-sm mb-3">{p.desc}</p>
-                  <Link href="/gallery" className="text-gold-600 font-semibold text-sm hover:text-gold-700 inline-flex items-center gap-1 group">
-                    View Project <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <Link
-              href="/gallery"
-              className="inline-flex items-center gap-2 bg-granite-950 hover:bg-granite-800 text-white px-8 py-4 rounded-2xl font-semibold transition shadow-xl"
-            >
-              View Full Gallery <ArrowRight size={18} />
-            </Link>
-          </div>
+      {/* Process */}
+      <section className="bg-[#f1ece4] py-24 sm:py-28">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="mx-auto max-w-2xl text-center"><p className="text-[10px] font-semibold uppercase tracking-[.22em] text-[#9a7546]">A calm, guided experience</p><h2 className="mt-4 text-4xl text-[#2a211b] sm:text-5xl">From first idea to final reveal.</h2></div>
+          <div className="mt-14 grid gap-px overflow-hidden rounded-[28px] border border-[#ddd2c4] bg-[#ddd2c4] md:grid-cols-4">{process.map((step,index) => <div key={step.title} className="group bg-[#fffdf9] p-7 transition hover:bg-[#faf6ef]"><div className="flex items-center justify-between"><span className="font-[Georgia] text-sm text-[#b28a52]">{step.number}</span>{index < process.length - 1 && <MoveRight size={14} className="hidden text-[#c5b5a2] md:block" />}</div><h3 className="mt-12 font-[Inter] text-base font-semibold tracking-normal text-[#302720]">{step.title}</h3><p className="mt-3 text-xs leading-6 text-[#796d61]">{step.text}</p></div>)}</div>
+          <div className="mt-10 text-center"><Link href="/our-process" className="inline-flex items-center gap-2 rounded-full bg-[#233d34] px-6 py-3 text-xs font-semibold text-white transition hover:bg-[#315246]">See the complete process <ArrowRight size={13} /></Link></div>
         </div>
       </section>
 
-      {/* ═══════════════ REVIEWS ═══════════════ */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <span className="inline-flex items-center gap-2 text-gold-600 font-semibold text-sm uppercase tracking-widest mb-4">
-              <Star size={14} /> Testimonials
-            </span>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-granite-950 mb-5 tracking-tight">
-              What Our Customers Say
-            </h2>
-            <div className="flex items-center justify-center gap-3 mt-2">
-              <div className="flex gap-0.5">
-                {[1,2,3,4,5].map((i) => (
-                  <Star key={i} size={22} className="fill-gold-400 text-gold-400" />
-                ))}
-              </div>
-              <span className="text-2xl font-extrabold text-granite-950">4.9</span>
-              <span className="text-granite-500">• {DUMMY_DATA.reviews.length}+ Reviews</span>
-            </div>
-          </div>
+      <ServiceAreaRail />
+      <ReviewRail />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {featuredReviews.map((r, i) => (
-              <div
-                key={r.id}
-                className={`card-hover bg-gradient-to-br from-white to-granite-50 rounded-3xl p-7 border border-granite-100`}
-              >
-                <div className="flex items-center justify-between mb-5">
-                  <div className="flex gap-0.5">
-                    {Array.from({ length: r.rating }).map((_, j) => (
-                      <Star key={j} size={14} className="fill-gold-400 text-gold-400" />
-                    ))}
-                  </div>
-                  {r.verified && (
-                    <span className="flex items-center gap-1 text-[11px] text-green-600 font-semibold bg-green-50 px-2.5 py-1 rounded-full">
-                      <CheckCircle size={10} /> Verified
-                    </span>
-                  )}
-                </div>
-                <p className="text-granite-600 text-sm leading-relaxed mb-5">
-                  &ldquo;{r.text}&rdquo;
-                </p>
-                <div className="flex items-center gap-3 pt-4 border-t border-granite-100">
-                  <div className="w-11 h-11 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center font-bold text-white text-xs">
-                    {r.name.split(" ").map(n => n[0]).join("")}
-                  </div>
-                  <div className="flex-1">
-                    <p className="font-semibold text-granite-950 text-sm">{r.name}</p>
-                    <p className="text-granite-400 text-xs">{r.location}</p>
-                  </div>
-                  <span className="bg-granite-100 text-granite-600 px-2.5 py-1 rounded-full text-[10px] font-semibold">
-                    {r.project}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <Link
-              href="/reviews"
-              className="inline-flex items-center gap-2 text-gold-600 hover:text-gold-700 font-semibold text-lg transition"
-            >
-              Read All {DUMMY_DATA.reviews.length}+ Reviews <ArrowRight size={18} />
-            </Link>
-          </div>
-        </div>
+      {/* Brand partners */}
+      <section className="border-y border-[#e4dbcf] bg-[#fffdf9] py-14">
+        <div className="mx-auto max-w-7xl px-4"><p className="text-center text-[8px] font-semibold uppercase tracking-[.24em] text-[#a39689]">Material and supplier relationships</p><div className="mt-7 flex flex-wrap items-center justify-center gap-x-10 gap-y-4">{DUMMY_DATA.brands.map((brand) => <span key={brand} className="text-sm font-semibold text-[#a39a90] transition hover:text-[#6b5746]">{brand}</span>)}</div></div>
       </section>
 
-      {/* ═══════════════ DESIGN TOOL CTA ═══════════════ */}
-      <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0">
-          <img src={IMAGES.kitchens[6]} alt="" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-granite-950/90" />
-        </div>
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-gold-600/10 to-transparent" />
-        </div>
-        <div className="max-w-5xl mx-auto px-4 text-center relative">
-          <div className="inline-flex items-center gap-2 glass rounded-full px-5 py-2.5 text-sm font-medium mb-8">
-            <Sparkles size={16} className="text-gold-400" />
-            <span className="text-white/90">Interactive Tool</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 tracking-tight">
-            Design Your Dream Kitchen
-            <br />
-            <span className="shimmer-text">Right Here, Right Now</span>
-          </h2>
-          <p className="text-granite-300 text-lg mb-12 max-w-2xl mx-auto leading-relaxed">
-            Use our interactive Kitchen Design Tool to create your layout, place cabinets and
-            appliances, add measurements, and submit for a free estimate — all from your browser.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/kitchen-design-tool"
-              className="group inline-flex items-center justify-center gap-3 bg-gradient-to-r from-gold-500 to-gold-600 text-white px-10 py-5 rounded-2xl font-semibold text-lg transition-all shadow-2xl hover:scale-[1.02] animate-pulse-gold"
-            >
-              <Play size={22} />
-              Start Designing Now
-              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════ SERVICE AREAS ═══════════════ */}
-      <section className="py-24 bg-gradient-to-b from-white to-granite-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <span className="inline-flex items-center gap-2 text-gold-600 font-semibold text-sm uppercase tracking-widest mb-4">
-              <MapPin size={14} /> Coverage
-            </span>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-granite-950 mb-5 tracking-tight">
-              Serving Your Community
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
-            {DUMMY_DATA.serviceAreas.slice(0, 8).map((area) => (
-              <Link
-                key={area.name}
-                href="/service-areas"
-                className={`group relative rounded-2xl overflow-hidden h-52 card-hover ${area.primary ? "ring-2 ring-gold-400 ring-offset-2" : ""}`}
-              >
-                <img src={IMAGES.homes[area.img]} alt={area.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-granite-950/90 via-granite-950/40 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-4">
-                  <div className="flex items-center gap-1.5 mb-1">
-                    <MapPin size={13} className="text-gold-400" />
-                    <h3 className="font-bold text-white text-sm">{area.name}</h3>
-                  </div>
-                  <p className="text-granite-400 text-[11px]">{area.projects}+ Projects</p>
-                </div>
-                {area.primary && (
-                  <div className="absolute top-3 right-3 bg-gold-500 text-white text-[9px] font-bold px-2 py-0.5 rounded-full">
-                    HQ
-                  </div>
-                )}
-              </Link>
-            ))}
-          </div>
-
-          <div className="text-center">
-            <Link href="/service-areas" className="inline-flex items-center gap-2 text-gold-600 hover:text-gold-700 font-semibold transition">
-              View All Service Areas <ArrowRight size={16} />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════ BRANDS ═══════════════ */}
-      <section className="py-12 bg-white border-y border-granite-100">
-        <div className="max-w-7xl mx-auto px-4">
-          <p className="text-center text-granite-400 text-xs font-semibold uppercase tracking-[0.2em] mb-8">Trusted Brands We Carry</p>
-          <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-4">
-            {DUMMY_DATA.brands.map((brand) => (
-              <span key={brand} className="text-granite-300 font-bold text-xl hover:text-gold-500 transition cursor-default select-none">
-                {brand}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════ FINAL CTA ═══════════════ */}
-      <section className="py-28 bg-gradient-to-br from-granite-950 via-granite-900 to-granite-950 relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gold-500/5 rounded-full blur-3xl" />
-        </div>
-        <div className="max-w-4xl mx-auto px-4 text-center relative">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 tracking-tight">
-            Ready to Transform
-            <br />
-            <span className="shimmer-text">Your Home?</span>
-          </h2>
-          <p className="text-granite-400 text-lg mb-12 max-w-2xl mx-auto leading-relaxed">
-            Whether you need new countertops, a kitchen remodel, or a bathroom renovation,
-            our expert team is ready to bring your vision to life.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
-            <Link
-              href="/estimate"
-              className="group inline-flex items-center justify-center gap-3 bg-gradient-to-r from-gold-500 to-gold-600 text-white px-10 py-5 rounded-2xl font-semibold text-lg transition-all shadow-2xl hover:scale-[1.02]"
-            >
-              <Calendar size={22} />
-              Schedule Free Consultation
-              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <a
-              href="tel:+15551234567"
-              className="inline-flex items-center justify-center gap-3 glass hover:bg-white/10 text-white px-10 py-5 rounded-2xl font-semibold text-lg transition"
-            >
-              <Phone size={22} />
-              (555) 123-4567
-            </a>
-          </div>
-          <div className="flex flex-wrap justify-center gap-6 text-granite-500 text-sm">
-            <span className="flex items-center gap-1.5"><CheckCircle size={14} className="text-gold-500" /> Free Estimates</span>
-            <span className="flex items-center gap-1.5"><CheckCircle size={14} className="text-gold-500" /> No Obligation</span>
-            <span className="flex items-center gap-1.5"><CheckCircle size={14} className="text-gold-500" /> Financing Available</span>
-          </div>
-        </div>
+      {/* Final CTA */}
+      <section className="relative overflow-hidden bg-[#211a16] py-28 text-white">
+        <img src={IMAGES.kitchens[6]} alt="Elegant finished kitchen" className="absolute inset-0 h-full w-full object-cover opacity-20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#211a16] via-[#211a16]/92 to-[#233d34]/75" />
+        <div className="relative mx-auto max-w-5xl px-4 text-center"><div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full border border-[#c6a66c]/35 text-[#d6bd8e]"><Sparkles size={18} /></div><h2 className="mx-auto mt-7 max-w-4xl text-4xl leading-tight text-white sm:text-6xl">Let’s make the room feel like it was always meant to be there.</h2><p className="mx-auto mt-6 max-w-2xl text-sm leading-7 text-white/50">Share your plans, photos, measurements, and timing. We’ll help define the right next step.</p><div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row"><Link href="/estimate" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#c6a66c] px-7 py-4 text-xs font-bold uppercase tracking-wider text-[#21170f] transition hover:bg-[#dfc896]">Request consultation <ArrowRight size={14} /></Link><a href="tel:+15551234567" className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/[.05] px-7 py-4 text-xs font-semibold uppercase tracking-wider text-white transition hover:bg-white/10"><Phone size={14} /> (555) 123-4567</a></div></div>
       </section>
     </>
   );

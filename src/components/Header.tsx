@@ -1,244 +1,90 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { Menu, X, Phone, ChevronDown, LayoutDashboard } from "lucide-react";
+import { ChevronDown, LayoutDashboard, Menu, Phone, X } from "lucide-react";
 import { IMAGES } from "@/lib/images";
 
 const navItems = [
-  { label: "Home", href: "/" },
-  {
-    label: "Services",
-    href: "#",
-    children: [
-      { label: "Countertops", href: "/countertops" },
-      { label: "Kitchen Remodeling", href: "/kitchen-remodeling" },
-      { label: "Bathroom Remodeling", href: "/bathroom-remodeling" },
-      { label: "Cabinets", href: "/cabinets" },
-      { label: "Backsplash", href: "/backsplash" },
-      { label: "Outdoor Kitchens", href: "/outdoor-kitchens" },
-      { label: "Fireplace Surrounds", href: "/fireplace" },
-    ],
-  },
-  {
-    label: "Materials",
-    href: "#",
-    children: [
-      { label: "All Materials", href: "/materials" },
-      { label: "Granite", href: "/materials/granite" },
-      { label: "Quartz", href: "/materials/quartz" },
-      { label: "Quartzite", href: "/materials/quartzite" },
-      { label: "Marble", href: "/materials/marble" },
-    ],
-  },
-  { label: "Kitchen Design Tool", href: "/kitchen-design-tool" },
+  { label: "Services", children: [
+    { label: "Countertops", description: "Fabrication & installation", href: "/countertops" },
+    { label: "Kitchen Remodeling", description: "Complete transformations", href: "/kitchen-remodeling" },
+    { label: "Bathroom Remodeling", description: "Showers, vanities & tile", href: "/bathroom-remodeling" },
+    { label: "Cabinets", description: "Thoughtful storage systems", href: "/cabinets" },
+    { label: "Backsplash", description: "Tile & natural stone", href: "/backsplash" },
+    { label: "Outdoor & Fireplace", description: "Stone beyond the kitchen", href: "/outdoor-kitchens" },
+  ]},
+  { label: "Materials", children: [
+    { label: "All Materials", description: "Compare every surface", href: "/materials" },
+    { label: "Granite", description: "Natural & enduring", href: "/materials/granite" },
+    { label: "Quartz", description: "Refined & effortless", href: "/materials/quartz" },
+    { label: "Quartzite", description: "Rare natural movement", href: "/materials/quartzite" },
+    { label: "Marble", description: "Timeless character", href: "/materials/marble" },
+  ]},
+  { label: "Kitchen Planner", href: "/kitchen-design-tool" },
   { label: "Gallery", href: "/gallery" },
-  {
-    label: "Company",
-    href: "#",
-    children: [
-      { label: "About Us", href: "/about" },
-      { label: "Our Process", href: "/our-process" },
-      { label: "Reviews", href: "/reviews" },
-      { label: "FAQ", href: "/faq" },
-      { label: "Service Areas", href: "/service-areas" },
-      { label: "Contractors & Builders", href: "/contractors" },
-      { label: "Financing", href: "/financing" },
-      { label: "Careers", href: "/careers" },
-      { label: "Platform Overview", href: "/platform" },
-    ],
-  },
-  { label: "Contact", href: "/contact" },
+  { label: "Company", children: [
+    { label: "Our Story", description: "Established craftsmanship", href: "/about" },
+    { label: "Our Process", description: "From measure to reveal", href: "/our-process" },
+    { label: "Client Reviews", description: "Verified experiences", href: "/reviews" },
+    { label: "Service Areas", description: "Where we work", href: "/service-areas" },
+    { label: "Contractors & Builders", description: "Trade partnerships", href: "/contractors" },
+    { label: "FAQ", description: "Helpful answers", href: "/faq" },
+  ]},
+  { label: "Investment", href: "/pricing" },
 ];
 
 export function Header() {
+  const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50">
-      {/* Top Bar */}
-      <div className="bg-granite-950 text-white text-sm">
-        <div className="max-w-7xl mx-auto px-4 py-2 flex justify-between items-center">
-          <div className="flex items-center gap-4">
-            <span className="hidden sm:inline">✨ Premium Countertops & Remodeling Services</span>
-            <Link href="/estimate" className="text-gold-400 hover:text-gold-300 font-medium">
-              Free Estimates →
-            </Link>
-          </div>
-          <a
-            href="tel:+15551234567"
-            className="flex items-center gap-1.5 hover:text-gold-400 transition font-medium"
-          >
-            <Phone size={14} />
-            (555) 123-4567
-          </a>
+    <header className="sticky top-0 z-50 border-b border-white/[0.06] bg-[#090b0a]/95 text-[#f4f0e8] shadow-[0_12px_40px_-28px_rgba(0,0,0,.9)] backdrop-blur-xl">
+      <div className="border-b border-white/[0.06] bg-[#0d100e]">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 text-[9px] uppercase tracking-[0.16em] text-[#77746e] sm:text-[10px]">
+          <div className="flex items-center gap-4"><span className="hidden sm:inline">Established 2009</span><i className="hidden h-1 w-1 rounded-full bg-[#c9ad70] sm:block" /><span>Licensed &amp; insured craftsmanship</span></div>
+          <div className="flex items-center gap-4"><Link href="/admin/login" className="hidden items-center gap-1.5 transition hover:text-[#c9ad70] md:flex"><LayoutDashboard size={11} /> Studio</Link><a href="tel:+15551234567" className="flex items-center gap-1.5 font-semibold text-[#d8bd80] transition hover:text-[#f0dfae]"><Phone size={11} /> (555) 123-4567</a></div>
         </div>
       </div>
 
-      {/* Main Nav */}
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="flex items-center justify-between h-18 lg:h-20">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-3">
-            <img 
-              src={IMAGES.logo} 
-              alt="House of Granite Logo" 
-              width={50} 
-              height={50}
-              className="rounded-lg"
-            />
-            <div className="leading-tight hidden sm:block">
-              <div className="font-bold text-granite-950 text-xl tracking-tight">
-                House of Granite
-              </div>
-              <div className="text-xs text-granite-500 tracking-widest uppercase">
-                Est. 2009
-              </div>
-            </div>
-          </Link>
+      <div className="mx-auto flex h-[76px] max-w-7xl items-center justify-between px-4">
+        <Link href="/" className="group flex items-center gap-3">
+          <img src={IMAGES.logo} alt="House of Granite" width={46} height={46} className="rounded-xl transition group-hover:scale-[1.03]" />
+          <div className="hidden leading-tight sm:block"><div className="font-[Georgia] text-lg tracking-[-0.02em] text-[#f4f0e8]">House of Granite</div><div className="mt-1 text-[8px] font-semibold uppercase tracking-[0.3em] text-[#77746e]">Stone · Kitchens · Baths</div></div>
+        </Link>
 
-          {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-0.5">
-            {navItems.map((item) => (
-              <div
-                key={item.label}
-                className="relative group"
-                onMouseEnter={() =>
-                  item.children && setOpenDropdown(item.label)
-                }
-                onMouseLeave={() => setOpenDropdown(null)}
-              >
+        <nav className="hidden items-center gap-0.5 xl:flex">
+          {navItems.map((item) => {
+            const active = item.href ? pathname === item.href : item.children?.some((child) => pathname === child.href);
+            return (
+              <div key={item.label} className="relative" onMouseEnter={() => item.children && setOpenDropdown(item.label)} onMouseLeave={() => setOpenDropdown(null)}>
                 {item.children ? (
-                  <button className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-granite-700 hover:text-granite-950 transition rounded-md hover:bg-granite-50">
-                    {item.label}
-                    <ChevronDown size={14} className={`transition-transform ${openDropdown === item.label ? 'rotate-180' : ''}`} />
-                  </button>
+                  <button className={`flex items-center gap-1 rounded-lg px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.08em] transition ${active ? "text-[#d8bd80]" : "text-[#aaa49b] hover:bg-white/[0.04] hover:text-[#f4f0e8]"}`}>{item.label}<ChevronDown size={12} className={`transition ${openDropdown === item.label ? "rotate-180" : ""}`} /></button>
                 ) : (
-                  <Link
-                    href={item.href}
-                    className="px-3 py-2 text-sm font-medium text-granite-700 hover:text-granite-950 transition rounded-md hover:bg-granite-50"
-                  >
-                    {item.label}
-                  </Link>
+                  <Link href={item.href!} className={`rounded-lg px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.08em] transition ${active ? "text-[#d8bd80]" : "text-[#aaa49b] hover:bg-white/[0.04] hover:text-[#f4f0e8]"}`}>{item.label}</Link>
                 )}
                 {item.children && openDropdown === item.label && (
-                  <div className="absolute top-full left-0 bg-white rounded-2xl shadow-2xl border border-granite-100 py-3 min-w-[230px] z-50 animate-slide-down">
-                    {item.children.map((child) => (
-                      <Link
-                        key={child.href}
-                        href={child.href}
-                        className="flex items-center gap-2 px-5 py-2.5 text-sm text-granite-600 hover:bg-gradient-to-r hover:from-gold-50 hover:to-transparent hover:text-granite-950 transition group"
-                      >
-                        <span className="w-1.5 h-1.5 rounded-full bg-granite-300 group-hover:bg-gold-500 transition" />
-                        {child.label}
-                      </Link>
-                    ))}
+                  <div className="animate-slide-down absolute left-0 top-full w-[284px] overflow-hidden rounded-2xl border border-[#2b312c] bg-[#111512]/98 p-2 shadow-[0_28px_80px_-20px_rgba(0,0,0,.85)] backdrop-blur-xl">
+                    {item.children.map((child) => <Link key={child.href} href={child.href} className="group flex items-center gap-3 rounded-xl px-3 py-3 transition hover:bg-white/[0.045]"><span className="h-7 w-px bg-[#343b35] transition group-hover:bg-[#c9ad70]" /><span><span className="block text-xs font-semibold text-[#d7d2c9] transition group-hover:text-[#f4f0e8]">{child.label}</span><span className="mt-0.5 block text-[9px] text-[#66645f]">{child.description}</span></span></Link>)}
                   </div>
                 )}
               </div>
-            ))}
-          </nav>
+            );
+          })}
+        </nav>
 
-          {/* CTA */}
-          <div className="hidden lg:flex items-center gap-2">
-            <Link
-              href="/admin/login"
-              className="inline-flex items-center gap-1.5 rounded-lg border border-granite-200 px-3.5 py-2.5 text-xs font-semibold text-granite-700 transition hover:border-granite-300 hover:bg-granite-50"
-            >
-              <LayoutDashboard size={14} /> Admin
-            </Link>
-            <Link
-              href="/estimate"
-              className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition shadow-lg shadow-gold-500/25"
-            >
-              Free Estimate
-            </Link>
-          </div>
-
-          {/* Mobile Toggle */}
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden p-2 text-granite-700 hover:bg-granite-100 rounded-lg transition"
-            aria-label="Toggle menu"
-          >
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+        <div className="hidden items-center gap-2 xl:flex">
+          <Link href="/estimate" className="rounded-full bg-[#c9ad70] px-5 py-2.5 text-[10px] font-bold uppercase tracking-[0.12em] text-[#11120f] shadow-[0_12px_35px_-16px_rgba(201,173,112,.55)] transition hover:bg-[#dfc98d]">Request consultation</Link>
         </div>
+        <button onClick={() => setMobileOpen((value) => !value)} className="rounded-xl border border-[#2d342e] p-2.5 text-[#d7d2c9] transition hover:border-[#65583d] xl:hidden" aria-label="Toggle menu">{mobileOpen ? <X size={20} /> : <Menu size={20} />}</button>
       </div>
 
-      {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="lg:hidden bg-white border-t border-granite-100 shadow-lg max-h-[80vh] overflow-y-auto">
-          <div className="px-4 py-4 space-y-1">
-            {navItems.map((item) => (
-              <div key={item.label}>
-                {item.children ? (
-                  <>
-                    <button
-                      onClick={() =>
-                        setOpenDropdown(
-                          openDropdown === item.label ? null : item.label
-                        )
-                      }
-                      className="flex items-center justify-between w-full px-3 py-3 text-sm font-medium text-granite-700 rounded-lg hover:bg-granite-50"
-                    >
-                      {item.label}
-                      <ChevronDown
-                        size={16}
-                        className={`transition-transform ${openDropdown === item.label ? "rotate-180" : ""}`}
-                      />
-                    </button>
-                    {openDropdown === item.label && (
-                      <div className="pl-4 space-y-0.5 pb-2">
-                        {item.children.map((child) => (
-                          <Link
-                            key={child.href}
-                            href={child.href}
-                            onClick={() => setMobileOpen(false)}
-                            className="block px-3 py-2.5 text-sm text-granite-600 hover:text-granite-950 rounded-lg hover:bg-granite-50"
-                          >
-                            {child.label}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                  </>
-                ) : (
-                  <Link
-                    href={item.href}
-                    onClick={() => setMobileOpen(false)}
-                    className="block px-3 py-3 text-sm font-medium text-granite-700 rounded-lg hover:bg-granite-50"
-                  >
-                    {item.label}
-                  </Link>
-                )}
-              </div>
-            ))}
-            <div className="pt-4 border-t border-granite-100 space-y-3">
-              <Link
-                href="/admin/login"
-                onClick={() => setMobileOpen(false)}
-                className="flex w-full items-center justify-center gap-2 rounded-lg border border-granite-200 px-5 py-3 text-sm font-semibold text-granite-700"
-              >
-                <LayoutDashboard size={16} /> Admin Login
-              </Link>
-              <Link
-                href="/estimate"
-                onClick={() => setMobileOpen(false)}
-                className="block w-full text-center bg-gradient-to-r from-gold-500 to-gold-600 text-white px-5 py-3 rounded-lg text-sm font-semibold"
-              >
-                Get Free Estimate
-              </Link>
-              <a
-                href="tel:+15551234567"
-                className="flex items-center justify-center gap-2 px-5 py-3 text-sm font-medium text-granite-700 border border-granite-200 rounded-lg hover:bg-granite-50"
-              >
-                <Phone size={16} />
-                (555) 123-4567
-              </a>
-            </div>
-          </div>
+        <div className="max-h-[calc(100vh-110px)] overflow-y-auto border-t border-white/[0.06] bg-[#0d100e] px-4 py-4 xl:hidden">
+          {navItems.map((item) => <div key={item.label}>{item.children ? <><button onClick={() => setOpenDropdown(openDropdown === item.label ? null : item.label)} className="flex w-full items-center justify-between rounded-xl px-3 py-3 text-left text-xs font-semibold uppercase tracking-wider text-[#c2beb6]"><span>{item.label}</span><ChevronDown size={14} className={`transition ${openDropdown === item.label ? "rotate-180" : ""}`} /></button>{openDropdown === item.label && <div className="mb-2 grid gap-1 pl-3">{item.children.map((child) => <Link key={child.href} href={child.href} onClick={() => setMobileOpen(false)} className="rounded-xl border-l border-[#343b35] px-4 py-2.5 text-xs text-[#8e8a83] hover:border-[#c9ad70] hover:bg-white/[0.03] hover:text-[#f4f0e8]">{child.label}</Link>)}</div>}</> : <Link href={item.href!} onClick={() => setMobileOpen(false)} className="block rounded-xl px-3 py-3 text-xs font-semibold uppercase tracking-wider text-[#c2beb6] hover:bg-white/[0.03]">{item.label}</Link>}</div>)}
+          <div className="mt-3 grid gap-2 border-t border-[#29312b] pt-4"><Link href="/estimate" onClick={() => setMobileOpen(false)} className="rounded-xl bg-[#c9ad70] px-5 py-3 text-center text-xs font-semibold text-[#11120f]">Request consultation</Link><Link href="/admin/login" onClick={() => setMobileOpen(false)} className="flex items-center justify-center gap-2 rounded-xl border border-[#343b35] px-5 py-3 text-xs font-semibold text-[#aaa49b]"><LayoutDashboard size={14} /> Admin studio</Link></div>
         </div>
       )}
     </header>

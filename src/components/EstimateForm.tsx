@@ -1,17 +1,8 @@
 "use client";
 
-import { useState } from "react";
-import { CheckCircle, Upload, Send } from "lucide-react";
-
-const serviceOptions = [
-  "Countertop project",
-  "Kitchen remodeling",
-  "Bathroom remodeling",
-  "Cabinets",
-  "Backsplash",
-  "Vanity",
-  "Other remodeling services",
-];
+import { useEffect, useState } from "react";
+import { CheckCircle, CircleDollarSign, Upload, Send } from "lucide-react";
+import { servicePricing } from "@/lib/service-pricing";
 
 const propertyTypes = ["Single Family Home", "Condo/Townhouse", "Multi-Family", "Commercial", "Other"];
 const customerTypes = ["Homeowner", "Contractor", "Builder", "Property Manager", "Other"];
@@ -39,6 +30,17 @@ export function EstimateForm() {
   });
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    const selectedId = new URLSearchParams(window.location.search).get("service");
+    const selectedService = servicePricing.find((item) => item.id === selectedId)?.service;
+    if (selectedService) {
+      setFormData((current) => ({
+        ...current,
+        services: current.services.includes(selectedService) ? current.services : [...current.services, selectedService],
+      }));
+    }
+  }, []);
 
   const toggleService = (service: string) => {
     setFormData((prev) => ({
@@ -114,33 +116,42 @@ export function EstimateForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-white rounded-xl shadow-sm border border-granite-100 p-6 md:p-8 space-y-8"
+      className="rounded-[30px] border border-[#ddd2c4] bg-[#fffdf9] p-6 shadow-[0_30px_90px_-55px_rgba(64,37,20,.32)] md:p-9 space-y-9"
     >
       {/* Services */}
       <div>
         <h3 className="text-lg font-bold text-granite-950 mb-3">
           What services are you interested in?
         </h3>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-          {serviceOptions.map((s) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+          {servicePricing.map((item) => (
             <label
-              key={s}
-              className={`flex items-center gap-2 p-3 rounded-lg border cursor-pointer transition text-sm ${
-                formData.services.includes(s)
-                  ? "border-gold-500 bg-gold-50 text-gold-700"
-                  : "border-granite-200 hover:border-granite-300"
+              key={item.id}
+              className={`group relative cursor-pointer rounded-2xl border p-4 transition-all ${
+                formData.services.includes(item.service)
+                  ? "border-[#b28a52] bg-[#faf4e8] shadow-[0_14px_35px_-24px_rgba(178,138,82,.28)] ring-1 ring-[#b28a52]/15"
+                  : "border-[#e1d7ca] bg-[#fffdf9] hover:-translate-y-0.5 hover:border-[#bda98e] hover:shadow-lg"
               }`}
             >
-              <input
-                type="checkbox"
-                checked={formData.services.includes(s)}
-                onChange={() => toggleService(s)}
-                className="accent-gold-500"
-              />
-              {s}
+              <input type="checkbox" checked={formData.services.includes(item.service)} onChange={() => toggleService(item.service)} className="sr-only" />
+              <div className="flex items-start justify-between gap-3">
+                <span className={`flex h-10 w-10 items-center justify-center rounded-xl ${formData.services.includes(item.service) ? "bg-[#233d34] text-white" : "bg-[#f1ece4] text-[#6d6257]"}`}><item.icon size={18} /></span>
+                <span className={`flex h-5 w-5 items-center justify-center rounded-full border ${formData.services.includes(item.service) ? "border-[#b28a52] bg-[#b28a52] text-white" : "border-[#cbbfb2] text-transparent"}`}><CheckCircle size={13} /></span>
+              </div>
+              <h4 className="mt-4 text-sm font-semibold text-[#302720]">{item.shortName}</h4>
+              <p className="mt-1 text-[10px] uppercase tracking-wider text-[#96897c]">Starting around</p>
+              <p className="mt-0.5 text-xl font-semibold text-[#493b32]">{item.startingAt}</p>
+              <p className="mt-1 text-[10px] font-medium text-[#9a7546]">{item.range}</p>
             </label>
           ))}
+          <label className={`cursor-pointer rounded-2xl border p-4 transition ${formData.services.includes("Other remodeling services") ? "border-[#b28a52] bg-[#faf4e8] ring-1 ring-[#b28a52]/15" : "border-[#e1d7ca] bg-[#fffdf9] hover:border-[#bda98e]"}`}>
+            <input type="checkbox" checked={formData.services.includes("Other remodeling services")} onChange={() => toggleService("Other remodeling services")} className="sr-only" />
+            <CircleDollarSign size={20} className="text-[#6d6257]" />
+            <h4 className="mt-3 text-sm font-semibold text-[#302720]">Other project</h4>
+            <p className="mt-2 text-xs leading-5 text-[#796d61]">Tell us what you are imagining and we will build a custom scope.</p>
+          </label>
         </div>
+        <p className="mt-3 text-[10px] leading-5 text-granite-500">Price guidance is illustrative. Your written proposal will reflect final measurements, materials, access, cutouts, demolition, and trade requirements.</p>
       </div>
 
       {/* Contact Info */}

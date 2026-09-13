@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { MapPin, ArrowRight, Phone, CheckCircle, Users } from "lucide-react";
 import { IMAGES, DUMMY_DATA } from "@/lib/images";
+import { ServiceAreaRail } from "@/components/ServiceAreaRail";
 
 export const metadata: Metadata = {
   title: "Service Areas | House of Granite LLC",
@@ -37,6 +38,9 @@ export default function ServiceAreasPage() {
           </div>
         </div>
       </section>
+
+      {/* Animated community rail */}
+      <ServiceAreaRail />
 
       {/* Primary Service Areas */}
       <section className="py-16 bg-white">
